@@ -1,9 +1,8 @@
-# This source file forms part of libcolrcv
+# This source file forms part of colrcv
 #
-# libcolrcv is a C Library for converting Colours between different Colour
-# Models.
+# colrcv is a C Library for converting Colours between different Colour Models.
 #
-# This is the CMake build file for libcolrcv.
+# This is the CMake build file for colrcv.
 # It requires CMake v3.0 or greater.
 #
 #
@@ -21,32 +20,32 @@ cmake_minimum_required(VERSION 3.0)
 project(colrcv VERSION 0.0.0 LANGUAGES C)
 
 # set default C standard to use (C99) if not already set
-if(NOT DEFINED LIBCOLRCV_C_STANDARD)
-    set(LIBCOLRCV_C_STANDARD "99")
+if(NOT DEFINED COLRCV_C_STANDARD)
+    set(COLRCV_C_STANDARD "99")
 endif()
-# if env variable LIBCOLRCV_C_STANDARD is set and valid, override version
-if(DEFINED ENV{LIBCOLRCV_C_STANDARD})
+# if env variable COLRCV_C_STANDARD is set and valid, override version
+if(DEFINED ENV{COLRCV_C_STANDARD})
     # not a very robust regex but ok for most purposes
-    if("$ENV{LIBCOLRCV_C_STANDARD}" MATCHES "(99|11)")
-        set(LIBCOLRCV_C_STANDARD "$ENV{LIBCOLRCV_C_STANDARD}")
+    if("$ENV{COLRCV_C_STANDARD}" MATCHES "(99|11)")
+        set(COLRCV_C_STANDARD "$ENV{COLRCV_C_STANDARD}")
     endif()
 endif()
-message(STATUS "[colrcv] C Standard set to C${LIBCOLRCV_C_STANDARD}")
-set(CMAKE_C_STANDARD ${LIBCOLRCV_C_STANDARD})
+message(STATUS "[colrcv] C Standard set to C${COLRCV_C_STANDARD}")
+set(CMAKE_C_STANDARD ${COLRCV_C_STANDARD})
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 set(
-    LIBCOLRCV_VERSION_STRING
+    COLRCV_VERSION_STRING
     "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
 )
-set(LIBCOLRCV_ESCAPED_VERSION_STRING "\"${LIBCOLRCV_VERSION_STRING}\"")
+set(COLRCV_ESCAPED_VERSION_STRING "\"${COLRCV_VERSION_STRING}\"")
 # end basic metadata
 
 # pass in version of library as preprocessor definitions
-add_definitions(-DLIBCOLRCV_VERSION_MAJOR=${PROJECT_VERSION_MAJOR})
-add_definitions(-DLIBCOLRCV_VERSION_MINOR=${PROJECT_VERSION_MINOR})
-add_definitions(-DLIBCOLRCV_VERSION_PATCH=${PROJECT_VERSION_PATCH})
-add_definitions(-DLIBCOLRCV_VERSION_STRING=${LIBCOLRCV_ESCAPED_VERSION_STRING})
+add_definitions(-DCOLRCV_VERSION_MAJOR=${PROJECT_VERSION_MAJOR})
+add_definitions(-DCOLRCV_VERSION_MINOR=${PROJECT_VERSION_MINOR})
+add_definitions(-DCOLRCV_VERSION_PATCH=${PROJECT_VERSION_PATCH})
+add_definitions(-DCOLRCV_VERSION_STRING=${COLRCV_ESCAPED_VERSION_STRING})
 
 # used for enabling additional compiler options if supported
 include(CheckCCompilerFlag)
@@ -77,14 +76,14 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 # C source files
-file(GLOB LIBCOLRCV_SOURCES "colrcv/*.c")
+file(GLOB COLRCV_SOURCES "colrcv/*.c")
 # Header files
-file(GLOB LIBCOLRCV_HEADERS "colrcv/*.h")
+file(GLOB COLRCV_HEADERS "colrcv/*.h")
 
-add_library(colrcv ${LIBCOLRCV_SOURCES})
+add_library(colrcv ${COLRCV_SOURCES})
 # set up version for library objects
 set_target_properties(
-    colrcv PROPERTIES VERSION ${LIBCOLRCV_VERSION_STRING}
+    colrcv PROPERTIES VERSION ${COLRCV_VERSION_STRING}
     SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
@@ -104,22 +103,22 @@ install(
 # The "precise" install location is pinned to the current major and minor versions
 
 # Generate rough (nearest major) version-dependent header installation folder
-set(LIBCOLRCV_ROUGH_HEADER_DESTINATION "colrcv-${PROJECT_VERSION_MAJOR}")
+set(COLRCV_ROUGH_HEADER_DESTINATION "colrcv-${PROJECT_VERSION_MAJOR}")
 # Generate precise (major and minor) version-dependent header installation folder
 set(
-    LIBCOLRCV_PRECISE_HEADER_DESTINATION
+    COLRCV_PRECISE_HEADER_DESTINATION
     "colrcv-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}"
 )
 
 # Install library header files, both to rough and precise install locations
 install(
-    FILES ${LIBCOLRCV_HEADERS}
-    DESTINATION "include/${LIBCOLRCV_ROUGH_HEADER_DESTINATION}"
+    FILES ${COLRCV_HEADERS}
+    DESTINATION "include/${COLRCV_ROUGH_HEADER_DESTINATION}"
 )
 
 install(
-    FILES ${LIBCOLRCV_HEADERS}
-    DESTINATION "include/${LIBCOLRCV_PRECISE_HEADER_DESTINATION}"
+    FILES ${COLRCV_HEADERS}
+    DESTINATION "include/${COLRCV_PRECISE_HEADER_DESTINATION}"
 )
 
 # No unit tests yet
