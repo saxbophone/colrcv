@@ -1,15 +1,26 @@
 /*
  * This source file forms part of colrcv
  * colrcv is a C Library for converting Colours between different Colour Models.
+ */
+
+/**
+ * @file
  *
+ * @brief This is the main header file.
  *
- * Copyright (C) 2017, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
- * 
+ * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
+ * @date 2017
+ *
+ * @copyright Copyright (C) Joshua Saxby 2017
+ *
+ * @copyright
  * The Copyright holder reserves all rights of this work.
- * 
+ *
+ * @copyright
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */
+
 #ifndef SAXBOPHONE_COLRCV_COLRCV_H
 #define SAXBOPHONE_COLRCV_COLRCV_H
 
