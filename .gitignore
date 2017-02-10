@@ -64,4 +64,7 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 
-# End of https://www.gitignore.io/api/c,cmake
+# CMake build directory
+build/*
+# explicitly allow build directory .gitkeep file
+!build/.gitkeep
