@@ -87,6 +87,38 @@ bool colrcv_hsl_l_is_valid(colrcv_hsl_t hsl);
  */
 bool colrcv_hsl_is_valid(colrcv_hsl_t hsl);
 
+/**
+ * @brief Converts a HSL colour to an RGB colour
+ * @param hsl A HSL colour to be converted
+ * @param[out] rgb The RGB colour to store the result in
+ * @returns Error/success information in a `colrcv_result_t` struct
+ */
+colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb);
+
+/**
+ * @brief Converts a HSL colour to a HSV colour
+ * @param hsl A HSL colour to be converted
+ * @param[out] hsv The HSV colour to store the result in
+ * @returns Error/success information in a `colrcv_result_t` struct
+ */
+colrcv_result_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl, colrcv_hsv_t* hsv);
+
+/**
+ * @brief Converts a HSL colour to a LAB colour
+ * @param hsl A HSL colour to be converted
+ * @param[out] lab The LAB colour to store the result in
+ * @returns Error/success information in a `colrcv_result_t` struct
+ */
+colrcv_result_t colrcv_hsl_to_lab(colrcv_hsl_t hsl, colrcv_lab_t* lab);
+
+/**
+ * @brief Converts a HSL colour to an XYZ colour
+ * @param hsl A HSL colour to be converted
+ * @param[out] xyz The XYZ colour to store the result in
+ * @returns Error/success information in a `colrcv_result_t` struct
+ */
+colrcv_result_t colrcv_hsl_to_xyz(colrcv_hsl_t hsl, colrcv_xyz_t* xyz);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

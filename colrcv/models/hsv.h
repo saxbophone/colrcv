@@ -114,7 +114,7 @@ colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab);
 /**
  * @brief Converts a HSV colour to an XYZ colour
  * @param hsv A HSV colour to be converted
- * @param[out] lab The XYZ colour to store the result in
+ * @param[out] xyz The XYZ colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
  */
 colrcv_result_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv, colrcv_xyz_t* xyz);
