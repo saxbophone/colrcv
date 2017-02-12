@@ -46,7 +46,7 @@ typedef struct colrcv_version_t {
     const char* string;
 } colrcv_version_t;
 
-/** @brief Stores the current version of colrcv. */
+/** @brief Stores the current version of colrcv */
 extern const colrcv_version_t COLRCV_VERSION;
 
 #ifdef __cplusplus

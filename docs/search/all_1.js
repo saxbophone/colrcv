@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['major',['major',['../structcolrcv__version__t.html#af5e076c809f5d66fdb2391c7ec002627',1,'colrcv_version_t']]],
-  ['minor',['minor',['../structcolrcv__version__t.html#adab1516523824cda81dcbe4d03be3191',1,'colrcv_version_t']]]
+  ['b',['b',['../structcolrcv__rgb__t.html#a8c16bbba88c41faaad8eb06758ed75c3',1,'colrcv_rgb_t::b()'],['../structcolrcv__lab__t.html#a920c15f97032395829935e187c28c924',1,'colrcv_lab_t::b()']]]
 ];

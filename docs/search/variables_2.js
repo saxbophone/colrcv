@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['patch',['patch',['../structcolrcv__version__t.html#af97853d9bd6a8047f2f67c61d1927e66',1,'colrcv_version_t']]]
+  ['colrcv_5fversion',['COLRCV_VERSION',['../colrcv_8h.html#aa0e52e5b9986d745f510a1d54a133771',1,'colrcv.c']]]
 ];
