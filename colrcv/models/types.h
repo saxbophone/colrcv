@@ -41,19 +41,8 @@ typedef struct colrcv_hsl_t colrcv_hsl_t;
 // LAB
 typedef struct colrcv_lab_t colrcv_lab_t;
 
-/**
- * @brief Used to represent an XYZ colour
- * @details This is the CIE-XYZ colour model. The component ranges are based on
- * an Observer of 2 degrees and an Illuminant of D65
- */
-typedef struct colrcv_xyz_t {
-    /** @brief The x component. Should be in range 0 -> 95.047 */
-    double x;
-    /** @brief The y component. Should be in range 0 -> 100 */
-    double y;
-    /** @brief The z component. Should be in range 0 -> 108.883 */
-    double z;
-} colrcv_xyz_t;
+// XYZ
+typedef struct colrcv_xyz_t colrcv_xyz_t;
 
 #ifdef __cplusplus
 } // extern "C"
