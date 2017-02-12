@@ -8,6 +8,7 @@
  *
  * @brief This header file forward-declares (via typedef) all the data types
  * used to represent colours in different colour models.
+ * @details This is necessary to avoid circular references between header files.
  *
  * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
  * @date 2017
