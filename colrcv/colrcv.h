@@ -20,7 +20,6 @@
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */
-
 #ifndef SAXBOPHONE_COLRCV_COLRCV_H
 #define SAXBOPHONE_COLRCV_COLRCV_H
 

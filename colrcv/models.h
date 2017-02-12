@@ -21,7 +21,6 @@
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */
-
 #ifndef SAXBOPHONE_COLRCV_MODELS_H
 #define SAXBOPHONE_COLRCV_MODELS_H
 
