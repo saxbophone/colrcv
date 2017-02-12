@@ -23,6 +23,7 @@
 #ifndef SAXBOPHONE_COLRCV_COLRCV_H
 #define SAXBOPHONE_COLRCV_COLRCV_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
 
@@ -47,6 +48,14 @@ typedef struct colrcv_version_t {
 
 /** @brief Stores the current version of colrcv */
 extern const colrcv_version_t COLRCV_VERSION;
+
+/**
+ * @brief A utility function for checking that a given value is in a given range
+ * @details Checks that the condition `min <= val <= max` is true
+ * @returns `true` if the condition is satisfied
+ * @returns `false` if the condition is not satisfied
+ */
+bool colrcv_range_valid(double min, double val, double max);
 
 #ifdef __cplusplus
 } // extern "C"

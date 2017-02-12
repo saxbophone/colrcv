@@ -10,6 +10,8 @@
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */
+#include <stdbool.h>
+
 #include "colrcv.h"
 
 
@@ -24,6 +26,10 @@ const colrcv_version_t COLRCV_VERSION = {
     .patch = COLRCV_VERSION_PATCH,
     .string = COLRCV_VERSION_STRING,
 };
+
+bool colrcv_range_valid(double min, double val, double max) {
+    return ((min <= val) && (val <= max));
+}
 
 #ifdef __cplusplus
 } // extern "C"

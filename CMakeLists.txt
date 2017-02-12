@@ -17,7 +17,7 @@
 # begin basic metadata
 cmake_minimum_required(VERSION 3.0)
 
-project(colrcv VERSION 0.0.0 LANGUAGES C)
+project(colrcv VERSION 0.1.0 LANGUAGES C)
 
 # set default C standard to use (C99) if not already set
 if(NOT DEFINED COLRCV_C_STANDARD)
@@ -76,9 +76,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 # C source files
-file(GLOB COLRCV_SOURCES "colrcv/*.c")
+file(GLOB COLRCV_SOURCES "colrcv/*.c" "colrcv/models/*.c")
 # Header files
 file(GLOB COLRCV_HEADERS "colrcv/*.h")
+# Header files for models subdirectory
+file(GLOB COLRCV_MODELS_HEADERS "colrcv/models/*.h")
 
 add_library(colrcv ${COLRCV_SOURCES})
 # set up version for library objects
@@ -115,10 +117,18 @@ install(
     FILES ${COLRCV_HEADERS}
     DESTINATION "include/${COLRCV_ROUGH_HEADER_DESTINATION}"
 )
+install(
+    FILES ${COLRCV_MODELS_HEADERS}
+    DESTINATION "include/${COLRCV_ROUGH_HEADER_DESTINATION}/models"
+)
 
 install(
     FILES ${COLRCV_HEADERS}
     DESTINATION "include/${COLRCV_PRECISE_HEADER_DESTINATION}"
+)
+install(
+    FILES ${COLRCV_MODELS__HEADERS}
+    DESTINATION "include/${COLRCV_PRECISE_HEADER_DESTINATION}/models"
 )
 
 # No unit tests yet
