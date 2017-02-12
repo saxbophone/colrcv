@@ -93,7 +93,7 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv);
  * @param hsv A HSV colour to be converted
  * @param[out] rgb The RGB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @warning Not Implemented
+ * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb);
 
@@ -102,7 +102,7 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb);
  * @param hsv A HSV colour to be converted
  * @param[out] hsl The HSL colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @warning Not Implemented
+ * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl);
 
@@ -111,7 +111,7 @@ colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl);
  * @param hsv A HSV colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @warning Not Implemented
+ * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab);
 
@@ -120,7 +120,7 @@ colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab);
  * @param hsv A HSV colour to be converted
  * @param[out] xyz The XYZ colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @warning Not Implemented
+ * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv, colrcv_xyz_t* xyz);
 
