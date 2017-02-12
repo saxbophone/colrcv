@@ -26,6 +26,7 @@
 
 #include <stdbool.h>
 
+#include "../colrcv.h"
 #include "types.h"
 
 
