@@ -32,31 +32,11 @@ extern "C"{
 // RGB
 typedef struct colrcv_rgb_t colrcv_rgb_t;
 
-/**
- * @brief Used to represent a HSV colour
- * @details This is the Hue/Saturation/Value colour model
- */
-typedef struct colrcv_hsv_t {
-    /** @brief The hue. Should be in range 0 -> 360 */
-    double h;
-    /** @brief The saturation. Should be in range 0 -> 100 */
-    double s;
-    /** @brief The value. Should be in range 0 -> 100 */
-    double v;
-} colrcv_hsv_t;
+// HSV
+typedef struct colrcv_hsv_t colrcv_hsv_t;
 
-/**
- * @brief Used to represent a HSL colour
- * @details This is the Hue/Saturation/Lightness colour model
- */
-typedef struct colrcv_hsl_t {
-    /** @brief The hue. Should be in range 0 -> 360 */
-    double h;
-    /** @brief The saturation. Should be in range 0 -> 100 */
-    double s;
-    /** @brief The lightness. Should be in range 0 -> 100 */
-    double l;
-} colrcv_hsl_t;
+// HSL
+typedef struct colrcv_hsl_t colrcv_hsl_t;
 
 /**
  * @brief Used to represent a LAB colour

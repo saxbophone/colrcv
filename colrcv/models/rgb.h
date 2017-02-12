@@ -75,7 +75,7 @@ bool colrcv_rgb_g_is_valid(colrcv_rgb_t rgb);
 bool colrcv_rgb_b_is_valid(colrcv_rgb_t rgb);
 
 /**
- * @brief Checks that the values of a given `colrcv_rgb_t` struct are valid
+ * @brief Checks that the components of a given `colrcv_rgb_t` struct are valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
  */
