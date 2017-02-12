@@ -38,18 +38,8 @@ typedef struct colrcv_hsv_t colrcv_hsv_t;
 // HSL
 typedef struct colrcv_hsl_t colrcv_hsl_t;
 
-/**
- * @brief Used to represent a LAB colour
- * @details This is the CIE-L*ab colour model
- */
-typedef struct colrcv_lab_t {
-    /** @brief The lightness. Should be in range 0 -> 100 */
-    double l;
-    /** @brief The a component. Should be in range -100 -> 100 */
-    double a;
-    /** @brief The b component. Should be in range -100 -> 100 */
-    double b;
-} colrcv_lab_t;
+// LAB
+typedef struct colrcv_lab_t colrcv_lab_t;
 
 /**
  * @brief Used to represent an XYZ colour
