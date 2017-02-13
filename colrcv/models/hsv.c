@@ -4,9 +4,9 @@
  *
  *
  * Copyright (C) 2017, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
- * 
+ *
  * The Copyright holder reserves all rights of this work.
- * 
+ *
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */

@@ -82,6 +82,14 @@ file(GLOB COLRCV_HEADERS "colrcv/*.h")
 # Header files for models subdirectory
 file(GLOB COLRCV_MODELS_HEADERS "colrcv/models/*.h")
 
+# Test Suite Harness Source Files
+file(GLOB TEST_HARNESS_SOURCES "unit_test_harness/*.c")
+# Test Suite Harness Header Files
+file(GLOB TEST_HARNESS_HEADERS "unit_test_harness/*.h")
+
+# Unit test C Source files
+file(GLOB TEST_COLRCV_SOURCES "tests/*.c")
+
 add_library(colrcv ${COLRCV_SOURCES})
 # set up version for library objects
 set_target_properties(
@@ -89,10 +97,23 @@ set_target_properties(
     SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
-# No unit tests yet
-# add_executable(colrcv_test tests.c)
-#
-# target_link_libraries(colrcv_test colrcv)
+# test harness library
+add_library(test_harness ${TEST_HARNESS_SOURCES})
+
+enable_testing()
+# unit test executables
+foreach(test_source_file ${TEST_COLRCV_SOURCES})
+    # remove '.c' extension and parent directories
+    get_filename_component(test_name ${test_source_file} NAME_WE)
+    # append "test_" to test_name
+    set(test_name "test_${test_name}")
+    # create executable for test
+    add_executable(${test_name} ${test_source_file})
+    # link test with library and test harness library
+    target_link_libraries(${test_name} colrcv test_harness)
+    # add test
+    add_test(${test_name} ${test_name})
+endforeach()
 
 install(
     TARGETS colrcv
@@ -130,7 +151,3 @@ install(
     FILES ${COLRCV_MODELS__HEADERS}
     DESTINATION "include/${COLRCV_PRECISE_HEADER_DESTINATION}/models"
 )
-
-# No unit tests yet
-# enable_testing()
-# add_test(unit_tests colrcv_test)
