@@ -25,13 +25,13 @@ extern "C"{
 /*
  * Test the function colrcv_rgb_r_is_valid
  * Function should return true when given a colrcv_rgb_t struct with a valid
- * red value
+ * red amount
  */
 static colrcv_test_result_t test_colrcv_rgb_r_is_valid_true(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_r_is_valid(
         (colrcv_rgb_t){ .r = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -42,13 +42,13 @@ static colrcv_test_result_t test_colrcv_rgb_r_is_valid_true(void) {
 /*
  * Test the function colrcv_rgb_r_is_valid
  * Function should return false when given a colrcv_rgb_t struct with an invalid
- * red value
+ * red amount
  */
 static colrcv_test_result_t test_colrcv_rgb_r_is_valid_false(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_r_is_valid(
         (colrcv_rgb_t){ .r = (COLRCV_RGB_MAX_VALUE * 2), }
     ) ? COLRCV_TEST_FAIL : COLRCV_TEST_SUCCESS;
@@ -59,13 +59,13 @@ static colrcv_test_result_t test_colrcv_rgb_r_is_valid_false(void) {
 /*
  * Test the function colrcv_rgb_g_is_valid
  * Function should return true when given a colrcv_rgb_t struct with a valid
- * green value
+ * green amount
  */
 static colrcv_test_result_t test_colrcv_rgb_g_is_valid_true(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_g_is_valid(
         (colrcv_rgb_t){ .g = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -76,13 +76,13 @@ static colrcv_test_result_t test_colrcv_rgb_g_is_valid_true(void) {
 /*
  * Test the function colrcv_rgb_g_is_valid
  * Function should return false when given a colrcv_rgb_t struct with an invalid
- * green value
+ * green amount
  */
 static colrcv_test_result_t test_colrcv_rgb_g_is_valid_false(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_g_is_valid(
         (colrcv_rgb_t){ .g = (COLRCV_RGB_MAX_VALUE * 2), }
     ) ? COLRCV_TEST_FAIL : COLRCV_TEST_SUCCESS;
@@ -93,13 +93,13 @@ static colrcv_test_result_t test_colrcv_rgb_g_is_valid_false(void) {
 /*
  * Test the function colrcv_rgb_b_is_valid
  * Function should return true when given a colrcv_rgb_t struct with a valid
- * blue value
+ * blue amount
  */
 static colrcv_test_result_t test_colrcv_rgb_b_is_valid_true(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_b_is_valid(
         (colrcv_rgb_t){ .b = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -110,13 +110,13 @@ static colrcv_test_result_t test_colrcv_rgb_b_is_valid_true(void) {
 /*
  * Test the function colrcv_rgb_b_is_valid
  * Function should return false when given a colrcv_rgb_t struct with an invalid
- * blue value
+ * blue amount
  */
 static colrcv_test_result_t test_colrcv_rgb_b_is_valid_false(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_b_is_valid(
         (colrcv_rgb_t){ .b = (COLRCV_RGB_MAX_VALUE * 2), }
     ) ? COLRCV_TEST_FAIL : COLRCV_TEST_SUCCESS;
@@ -127,13 +127,13 @@ static colrcv_test_result_t test_colrcv_rgb_b_is_valid_false(void) {
 /*
  * Test the function colrcv_rgb_is_valid
  * Function should return true when given a colrcv_rgb_t struct with valid
- * values
+ * amounts
  */
 static colrcv_test_result_t test_colrcv_rgb_is_valid_true(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_is_valid(
         (colrcv_rgb_t){
             .r = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2,
@@ -148,13 +148,13 @@ static colrcv_test_result_t test_colrcv_rgb_is_valid_true(void) {
 /*
  * Test the function colrcv_rgb_is_valid
  * Function should return false when given a colrcv_rgb_t struct with any
- * invalid values
+ * invalid amounts
  */
 static colrcv_test_result_t test_colrcv_rgb_is_valid_false(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set result based on boolean return value
+    // set result based on boolean return amount
     test.result = colrcv_rgb_b_is_valid(
         (colrcv_rgb_t){
             .r = (COLRCV_RGB_MAX_VALUE * 2),
