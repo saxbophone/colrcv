@@ -22,7 +22,7 @@ extern "C"{
 #endif
 
 // returns a blank test suite
-colrcv_test_suite_t colrcv_init_test_suite() {
+colrcv_test_suite_t colrcv_init_test_suite(void) {
     return (colrcv_test_suite_t) {
         .tests = NULL, .test_count = 0, .result = true
     };
