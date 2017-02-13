@@ -140,7 +140,7 @@ static colrcv_test_result_t test_colrcv_range_valid_max_exceeded(void) {
     return test;
 }
 
-int main() {
+int main(void) {
     // initialise test suite
     colrcv_test_suite_t suite = colrcv_init_test_suite();
     // add test cases
