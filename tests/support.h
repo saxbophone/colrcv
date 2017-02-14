@@ -22,8 +22,8 @@
 extern "C"{
 #endif
 
-// the tolerance which `almost_equal` compares to
-const double ALMOST = 0.01;
+// the tolerance which `almost_equal` compares to - 3d.p. is good enough
+const double ALMOST = 0.001;
 
 /*
  * compares two fractional numbers for 'almost equality' - defined as `value`

@@ -73,32 +73,32 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
     } else {
         // set saturation and upscale to the 0-100 range
         hsv->s = (delta_channel / max_channel) * 100;
-        // get each per-channel delta
-        double delta_r = (
-            (((max_channel - r) / 6 ) + (delta_channel / 2)) / delta_channel
-        );
-        double delta_g = (
-            (((max_channel - g) / 6 ) + (delta_channel / 2)) / delta_channel
-        );
-        double delta_b = (
-            (((max_channel - b) / 6 ) + (delta_channel / 2)) / delta_channel
-        );
+        // // get each per-channel delta
+        // double delta_r = (
+        //     (((max_channel - r) / 6 ) + (delta_channel / 2)) / delta_channel
+        // );
+        // double delta_g = (
+        //     (((max_channel - g) / 6 ) + (delta_channel / 2)) / delta_channel
+        // );
+        // double delta_b = (
+        //     (((max_channel - b) / 6 ) + (delta_channel / 2)) / delta_channel
+        // );
         // set the hue based on deltas and which channel had the highest value
         if(r == max_channel) {
-            hsv->h = (delta_b - delta_g);
+            hsv->h = (g - b) / delta_channel;
         } else if(g == max_channel) {
-            hsv->h = ((1 / 3) + delta_r - delta_b);
+            hsv->h = 2 + (b - r) / delta_channel;
         } else { // b == max_channel
-            hsv->h = ((2 / 3) + delta_g - delta_r);
+            hsv->h = 4 + (r - g) / delta_channel;
         }
+        // adjust h to be in the 0-360 range
+        hsv->h *= 60;
         // wrap-around the output value of h if needed
         if(hsv->h < 0) {
-            hsv->h += 1;
-        } else if(hsv->h > 1) {
-            hsv->h -= 1;
+            hsv->h += 360;
+        } else if(hsv->h > 360) {
+            hsv->h -= 360;
         }
-        // finally, adjust h to be in the 0-360 range
-        hsv->h *= 360;
     }
     return;
 }

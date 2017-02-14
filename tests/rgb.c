@@ -197,19 +197,19 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
     struct rgb_to_hsv_pair_t colours[4] = {
         {
             .input = { .r = 69, .g = 219, .b = 31, },
-            .output = { .h = 107.9, .s = 85.84, .v = 85.88, },
+            .output = { .h = 107.872, .s = 85.844, .v = 85.882, },
         },
         {
             .input = { .r = 217, .g = 45, .b = 19, },
-            .output = { .h = 7.9, .s = 91.24, .v = 85.10, },
+            .output = { .h = 7.878, .s = 91.244, .v = 85.098, },
         },
         {
             .input = { .r = 33, .g = 33, .b = 33, },
-            .output = { .h = 0.0, .s = 0.0, .v = 12.94, },
+            .output = { .h = 0.0, .s = 0.0, .v = 12.941, },
         },
         {
             .input = { .r = 255, .g = 127, .b = 63, },
-            .output = { .h = 20.0, .s = 75.29, .v = 100.0, },
+            .output = { .h = 20.0, .s = 75.294, .v = 100.0, },
         },
     };
     // flag to keep track of result
