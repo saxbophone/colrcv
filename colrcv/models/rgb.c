@@ -73,17 +73,8 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
     } else {
         // set saturation and upscale to the 0-100 range
         hsv->s = (delta_channel / max_channel) * 100;
-        // // get each per-channel delta
-        // double delta_r = (
-        //     (((max_channel - r) / 6 ) + (delta_channel / 2)) / delta_channel
-        // );
-        // double delta_g = (
-        //     (((max_channel - g) / 6 ) + (delta_channel / 2)) / delta_channel
-        // );
-        // double delta_b = (
-        //     (((max_channel - b) / 6 ) + (delta_channel / 2)) / delta_channel
-        // );
-        // set the hue based on deltas and which channel had the highest value
+        // set the hue based on delta and which channel had the highest value
+        // (http://wiki.secondlife.com/wiki/Color_conversion_scripts)
         if(r == max_channel) {
             hsv->h = (g - b) / delta_channel;
         } else if(g == max_channel) {
