@@ -23,7 +23,7 @@ extern "C"{
 #endif
 
 // the tolerance which `almost_equal` compares to
-const double ALMOST = 0.001;
+const double ALMOST = 0.01;
 
 /*
  * compares two fractional numbers for 'almost equality' - defined as `value`
