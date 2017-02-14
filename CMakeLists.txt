@@ -83,9 +83,9 @@ file(GLOB COLRCV_HEADERS "colrcv/*.h")
 file(GLOB COLRCV_MODELS_HEADERS "colrcv/models/*.h")
 
 # Test Suite Harness Source Files
-file(GLOB TEST_HARNESS_SOURCES "unit_test_harness/*.c")
+file(GLOB UNIT_TEST_HARNESS_SOURCES "unit_test_harness/*.c")
 # Test Suite Harness Header Files
-file(GLOB TEST_HARNESS_HEADERS "unit_test_harness/*.h")
+file(GLOB UNIT_TEST_HARNESS_HEADERS "unit_test_harness/*.h")
 
 # Unit test C Source files
 file(GLOB TEST_COLRCV_SOURCES "tests/*.c")
@@ -98,7 +98,7 @@ set_target_properties(
 )
 
 # test harness library
-add_library(test_harness ${TEST_HARNESS_SOURCES})
+add_library(unit_test_harness ${UNIT_TEST_HARNESS_SOURCES})
 
 enable_testing()
 # unit test executables
@@ -110,7 +110,7 @@ foreach(test_source_file ${TEST_COLRCV_SOURCES})
     # create executable for test
     add_executable(${test_name} ${test_source_file})
     # link test with library and test harness library
-    target_link_libraries(${test_name} colrcv test_harness)
+    target_link_libraries(${test_name} colrcv unit_test_harness)
     # add test
     add_test(${test_name} ${test_name})
 endforeach()
