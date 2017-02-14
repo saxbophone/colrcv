@@ -33,7 +33,9 @@ static colrcv_test_result_t test_colrcv_rgb_r_is_valid_true(void) {
 
     // set result based on boolean return amount
     test.result = colrcv_rgb_r_is_valid(
-        (colrcv_rgb_t){ .r = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
+        (colrcv_rgb_t){
+            .r = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2,
+        }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
 
     return test;
@@ -67,7 +69,9 @@ static colrcv_test_result_t test_colrcv_rgb_g_is_valid_true(void) {
 
     // set result based on boolean return amount
     test.result = colrcv_rgb_g_is_valid(
-        (colrcv_rgb_t){ .g = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
+        (colrcv_rgb_t){
+            .g = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2,
+        }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
 
     return test;
@@ -101,7 +105,9 @@ static colrcv_test_result_t test_colrcv_rgb_b_is_valid_true(void) {
 
     // set result based on boolean return amount
     test.result = colrcv_rgb_b_is_valid(
-        (colrcv_rgb_t){ .b = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2, }
+        (colrcv_rgb_t){
+            .b = (COLRCV_RGB_MIN_VALUE + COLRCV_RGB_MAX_VALUE) / 2,
+        }
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
 
     return test;
