@@ -87,7 +87,6 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb);
  * @param rgb An RGB colour to be converted
  * @param[out] hsv The HSV colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv);
 
