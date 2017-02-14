@@ -14,6 +14,7 @@
 
 #include "../colrcv.h"
 #include "rgb.h"
+#include "hsv.h"
 
 
 #ifdef __cplusplus
@@ -48,6 +49,13 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb) {
         colrcv_rgb_g_is_valid(rgb) &&
         colrcv_rgb_b_is_valid(rgb)
     );
+}
+
+colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
+    hsv->h = rgb.r;
+    hsv->s = rgb.g;
+    hsv->v = rgb.b;
+    return;
 }
 
 #ifdef __cplusplus
