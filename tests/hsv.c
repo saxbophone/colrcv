@@ -196,20 +196,20 @@ static colrcv_test_result_t test_colrcv_hsv_to_rgb(void) {
     // setup test data - we want 4 sample colours to test
     struct hsv_to_rgb_pair_t colours[4] = {
         {
-            .input = { .h = 107.872, .s = 85.844, .v = 85.882, },
-            .output = { .r = 69, .g = 219, .b = 31, },
+            .input = { .h = 108, .s = 86, .v = 86, },
+            .output = { .r = 68.421, .g = 219.3, .b = 30.702, },
         },
         {
-            .input = { .h = 7.878, .s = 91.244, .v = 85.098, },
-            .output = { .r = 217, .g = 45, .b = 19, },
+            .input = { .h = 8, .s = 91, .v = 85, },
+            .output = { .r = 216.75, .g = 45.806, .b = 19.507, },
         },
         {
-            .input = { .h = 0.0, .s = 0.0, .v = 12.941, },
-            .output = { .r = 33, .g = 33, .b = 33, },
+            .input = { .h = 0, .s = 0, .v = 13, },
+            .output = { .r = 33.15, .g = 33.15, .b = 33.15, },
         },
         {
-            .input = { .h = 20.0, .s = 75.294, .v = 100.0, },
-            .output = { .r = 255, .g = 127, .b = 63, },
+            .input = { .h = 20, .s = 75, .v = 100, },
+            .output = { .r = 255, .g = 127.5, .b = 63.75, },
         },
     };
     // flag to keep track of result
