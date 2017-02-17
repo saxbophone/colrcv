@@ -20,6 +20,7 @@
 
 #include "../colrcv/models/rgb.h"
 #include "../colrcv/models/hsv.h"
+#include "../colrcv/models/hsl.h"
 
 
 #ifdef __cplusplus
@@ -205,11 +206,11 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
         },
         {
             .input = { .r = 33, .g = 33, .b = 33, },
-            .output = { .h = 0.0, .s = 0.0, .v = 12.941, },
+            .output = { .h = 0, .s = 0, .v = 12.941, },
         },
         {
             .input = { .r = 255, .g = 127, .b = 63, },
-            .output = { .h = 20.0, .s = 75.294, .v = 100.0, },
+            .output = { .h = 20, .s = 75.294, .v = 100, },
         },
     };
     // flag to keep track of result
@@ -241,6 +242,71 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
     return test;
 }
 
+/*
+ * An internal struct type used only in this test for storing pairs of input
+ * RGB and output HSL colours
+ */
+struct rgb_to_hsl_pair_t {
+    colrcv_rgb_t input;
+    colrcv_hsl_t output;
+};
+
+/*
+ * Test the function colrcv_rgb_to_hsl
+ * Function should return a correctly calculated HSL colour for the given RGB
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct rgb_to_hsl_pair_t colours[4] = {
+        {
+            .input = { .r = 69, .g = 219, .b = 31, },
+            .output = { .h = 107.872, .s = 75.2, .l = 49.02, },
+        },
+        {
+            .input = { .r = 217, .g = 45, .b = 19, },
+            .output = { .h = 7.878, .s = 83.898, .l = 46.274, },
+        },
+        {
+            .input = { .r = 33, .g = 33, .b = 33, },
+            .output = { .h = 0, .s = 0, .l = 12.941, },
+        },
+        {
+            .input = { .r = 255, .g = 127, .b = 63, },
+            .output = { .h = 20, .s = 100, .l = 62.352, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(size_t i = 0; i < 4; i++) {
+        colrcv_hsl_t result;
+        colrcv_rgb_to_hsl(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.h, colours[i].output.h) &&
+            almost_equal(result.s, colours[i].output.s) &&
+            almost_equal(result.l, colours[i].output.l)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.h, colours[i].output.s, colours[i].output.l,
+                result.h, result.s, result.l
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
 int main(void) {
     // initialise test suite
     colrcv_test_suite_t suite = colrcv_init_test_suite();
@@ -254,6 +320,7 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_rgb_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_rgb_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_rgb_to_hsv, &suite);
+    colrcv_add_test_case(test_colrcv_rgb_to_hsl, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
     // return test suite status
