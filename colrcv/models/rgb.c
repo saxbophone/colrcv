@@ -58,8 +58,8 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
     double g = rgb.g / 255;
     double b = rgb.b / 255;
     // get the minimum and maximum channel amount
-    double min_channel = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
-    double max_channel = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
+    double min_channel = colrcv_min(r, colrcv_min(g, b));
+    double max_channel = colrcv_max(r, colrcv_max(g, b));
     // get the difference (delta) between max and min
     double delta_channel = max_channel - min_channel;
     // the value component is set to max_channel (upscaled to 0-100 range)

@@ -31,6 +31,14 @@ bool colrcv_range_valid(double min, double val, double max) {
     return ((min <= val) && (val <= max));
 }
 
+double colrcv_min(double a, double b) {
+    return (a < b) ? a : b;
+}
+
+double colrcv_max(double a, double b) {
+    return (a > b) ? a : b;
+}
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

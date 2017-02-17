@@ -65,6 +65,18 @@ typedef void colrcv_result_t;
  */
 bool colrcv_range_valid(double min, double val, double max);
 
+/**
+ * @brief Get the smallest of two given values
+ * @returns The smallest value
+ */
+double colrcv_min(double a, double b);
+
+/**
+ * @brief Get the largest of two given values
+ * @returns The largest value
+ */
+double colrcv_max(double a, double b);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif
