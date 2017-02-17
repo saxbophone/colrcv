@@ -116,7 +116,6 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
         // finally, set the hue
         hsv->h = get_hue_amount(r, g, b, max_channel, delta_channel);
     }
-    return;
 }
 
 colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
@@ -144,7 +143,6 @@ colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
         // finally, set the hue
         hsl->h = get_hue_amount(r, g, b, max_channel, delta_channel);
     }
-    return;
 }
 
 #ifdef __cplusplus
