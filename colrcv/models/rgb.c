@@ -15,6 +15,7 @@
 #include "../colrcv.h"
 #include "rgb.h"
 #include "hsv.h"
+#include "hsl.h"
 
 
 #ifdef __cplusplus
@@ -115,6 +116,12 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
         // finally, set the hue
         hsv->h = get_hue_amount(r, g, b, max_channel, delta_channel);
     }
+    return;
+}
+
+colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
+    // NOTE: Dummy implementation, replace later
+    hsl->l = rgb.r;
     return;
 }
 
