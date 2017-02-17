@@ -118,6 +118,7 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
     }
 }
 
+// Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=18#text18
 colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
     double r, g, b, min_channel, max_channel, delta_channel;
     // scale down each RGB channel

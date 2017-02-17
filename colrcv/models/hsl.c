@@ -71,6 +71,7 @@ static double hue_to_rgb(double a, double b, double h) {
     }
 }
 
+// Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=19#text19
 colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb) {
     // if saturation is 0, it's an achromatic grey so return early
     if(hsl.s == 0) {
