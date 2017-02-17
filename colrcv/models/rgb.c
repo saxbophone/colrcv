@@ -125,19 +125,22 @@ colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
     scale_down_rgb(rgb, &r, &g, &b);
     // get min and max of these channels and the delta of min and max
     get_min_max_delta(r, g, b, &min_channel, &max_channel, &delta_channel);
-    // the value component is set to the average of max and min of channels
+    // the lightness component is set to the average of max and min of channels
     hsl->l = (max_channel + min_channel) / 2 * 100;
     // if delta is 0, this is an achromatic grey
     if(delta_channel == 0) {
         hsl->h = 0;
         hsl->s = 0;
     } else {
-        // saturation is set differently depending on lightness amount
-        hsl->s = delta_channel / (
-            (hsl->l < 50) ?
-            (max_channel + min_channel) :
-            (2 - max_channel - min_channel)
-        ) * 100;
+        /*
+         * saturation is set differently depending on if lightness amount is
+         * less than or greater than half
+         */
+        if(hsl->l < 50) {
+            hsl->s = delta_channel / (max_channel + min_channel) * 100;
+        } else {
+            hsl->s = delta_channel / (2 - max_channel - min_channel) * 100;
+        }
         // finally, set the hue
         hsl->h = get_hue_amount(r, g, b, max_channel, delta_channel);
     }
