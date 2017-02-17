@@ -267,7 +267,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
         },
         {
             .input = { .r = 217, .g = 45, .b = 19, },
-            .output = { .h = 7.878, .s = 83.9, .l = 46.27, },
+            .output = { .h = 7.878, .s = 83.898, .l = 46.274, },
         },
         {
             .input = { .r = 33, .g = 33, .b = 33, },
@@ -275,7 +275,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
         },
         {
             .input = { .r = 255, .g = 127, .b = 63, },
-            .output = { .h = 20, .s = 100, .l = 62.35, },
+            .output = { .h = 20, .s = 100, .l = 62.352, },
         },
     };
     // flag to keep track of result
