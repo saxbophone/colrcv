@@ -55,29 +55,24 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
 }
 
 // private helper function for colrcv_lab_to_xyz
+// // NOTE: This is the inverse of the function of the same name in xyz.c
 static double convert_xyz_component(double c) {
     // get c cubed
     const double c_cubed = pow(c, 3.0);
-    // normalised component depends on size of cubed component
+    // converted component depends on size of cubed component
     return (c_cubed > 0.008856) ? c_cubed : ((c - 16.0 / 116.0) / 7.787);
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=08#text8
 colrcv_result_t colrcv_lab_to_xyz(colrcv_lab_t lab, colrcv_xyz_t* xyz) {
-    // TODO: Move these somewhere else
-    // These config values are takem from Tristimulus calculations
-    // Observer = 2°, Illuminant = D65
-    static const double ref_x = 95.047;
-    static const double ref_y = 100.0;
-    static const double ref_z = 108.883;
     // skew input values
     const double y = (lab.l + 16.0) / 116.0;
     const double x = lab.a / 500.0 + y;
     const double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
-    xyz->x = ref_x * convert_xyz_component(x);
-    xyz->y = ref_y * convert_xyz_component(y);
-    xyz->z = ref_z * convert_xyz_component(z);
+    xyz->x = COLRCV_XYZ_X_REF_VALUE * convert_xyz_component(x);
+    xyz->y = COLRCV_XYZ_Y_REF_VALUE * convert_xyz_component(y);
+    xyz->z = COLRCV_XYZ_Z_REF_VALUE * convert_xyz_component(z);
 }
 
 #ifdef __cplusplus

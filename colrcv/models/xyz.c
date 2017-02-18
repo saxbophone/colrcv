@@ -23,9 +23,14 @@ extern "C"{
 #endif
 
 const double COLRCV_XYZ_MIN_VALUE = 0;
-const double COLRCV_XYZ_X_MAX_VALUE = 95.047;
+
+const double COLRCV_XYZ_X_MAX_VALUE = 112;
 const double COLRCV_XYZ_Y_MAX_VALUE = 100;
-const double COLRCV_XYZ_Z_MAX_VALUE = 108.883;
+const double COLRCV_XYZ_Z_MAX_VALUE = 123;
+
+const double COLRCV_XYZ_X_REF_VALUE = 95.047;
+const double COLRCV_XYZ_Y_REF_VALUE = 100.0;
+const double COLRCV_XYZ_Z_REF_VALUE = 108.883;
 
 bool colrcv_xyz_x_is_valid(colrcv_xyz_t xyz) {
     return colrcv_range_valid(
@@ -55,21 +60,18 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
 }
 
 // private helper function for colrcv_xyz_to_lab
+// NOTE: This is the inverse of the function of the same name in lab.c
 static double convert_xyz_component(double c) {
+    // converted component needs the cube root of input if over a given size
     return (c > 0.008856) ? pow(c, (1.0 / 3)) : (7.787 * c) + (16 / 116);
 }
 
+// Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=07#text7
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
-    // TODO: Move these somewhere else
-    // These config values are takem from Tristimulus calculations
-    // Observer = 2°, Illuminant = D65
-    static const double ref_x = 95.047;
-    static const double ref_y = 100.0;
-    static const double ref_z = 108.883;
     // skew and convert input values
-    const double x = convert_xyz_component(xyz.x / ref_x);
-    const double y = convert_xyz_component(xyz.y / ref_y);
-    const double z = convert_xyz_component(xyz.z / ref_z);
+    const double x = convert_xyz_component(xyz.x / COLRCV_XYZ_X_REF_VALUE);
+    const double y = convert_xyz_component(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
+    const double z = convert_xyz_component(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
     // convert to LAB ranges
     lab->l = (116 * y) - 16;
     lab->a = 500 * (x - y);
