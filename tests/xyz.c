@@ -205,7 +205,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_lab(void) {
         },
         {
             .input = { .x = 10.121, .y = 7.537, .z = 2.753, },
-            .output = { .l = 33, .a = 25.786, .b = 25.780, },
+            .output = { .l = 32.999, .a = 25.786, .b = 25.780, },
         },
         {
             .input = { .x = 67.402, .y = 64.066, .z = 5.168, },
