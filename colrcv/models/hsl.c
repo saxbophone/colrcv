@@ -80,13 +80,13 @@ colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb) {
         rgb->b = hsl.l / 100 * 255;
     } else {
         // down-scale all channels
-        double h = hsl.h / 360;
-        double s = hsl.s / 100;
-        double l = hsl.l / 100;
+        const double h = hsl.h / 360;
+        const double s = hsl.s / 100;
+        const double l = hsl.l / 100;
         // get temporary 'b'
-        double temp_b = (l < 0.5) ? (l * (1 + s)) : ((l + s) - (s * l));
+        const double temp_b = (l < 0.5) ? (l * (1 + s)) : ((l + s) - (s * l));
         // get temporary 'a'
-        double temp_a = 2 * l - temp_b;
+        const double temp_a = 2 * l - temp_b;
         // get component amounts with respect to hue and temporaries
         rgb->r = 255 * hue_to_rgb(temp_a, temp_b, h + (1.0 / 3));
         rgb->g = 255 * hue_to_rgb(temp_a, temp_b, h);

@@ -56,8 +56,8 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv) {
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=21#text21
 colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
     // down-scale s and v input values first
-    double s = hsv.s / 100;
-    double v = hsv.v / 100;
+    const double s = hsv.s / 100;
+    const double v = hsv.v / 100;
     // if saturation is 0, then we can return early
     if(s == 0) {
         rgb->r = v * 255;
@@ -72,11 +72,11 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
             scaled_h -= 6.0;
         }
         // floor convert to int
-        uint16_t integer_h = (uint16_t)scaled_h;
+        const uint16_t integer_h = (uint16_t)scaled_h;
         // this further lot of temporaries are used in the channel multiplex
-        double temp_a = v * (1.0 - s);
-        double temp_b = v * (1.0 - s * (scaled_h - integer_h));
-        double temp_c = v * (1.0 - s * (1.0 - (scaled_h - integer_h)));
+        const double temp_a = v * (1.0 - s);
+        const double temp_b = v * (1.0 - s * (scaled_h - integer_h));
+        const double temp_c = v * (1.0 - s * (1.0 - (scaled_h - integer_h)));
         // choose one of many different multiplexes based on value of integer_h
         switch(integer_h % 6) {
             case 0:
