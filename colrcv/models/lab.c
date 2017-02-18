@@ -55,7 +55,7 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
 }
 
 // private helper function for colrcv_lab_to_xyz
-// // NOTE: This is the inverse of the function of the same name in xyz.c
+// NOTE: This is the inverse of the function of the same name in xyz.c
 static double convert_xyz_component(double c) {
     // get c cubed
     const double c_cubed = pow(c, 3.0);
