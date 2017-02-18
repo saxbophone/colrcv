@@ -36,15 +36,15 @@ extern "C"{
 
 /**
  * @brief Used to represent an XYZ colour
- * @details This is the CIE-XYZ colour model. The component ranges are based on
- * an Observer of 2 degrees and an Illuminant of D65
+ * @details This is the CIE-XYZ colour model. For now, this is assumed to be
+ * based on an Observer of 2 degrees and an Illuminant of D65.
  */
 struct colrcv_xyz_t {
-    /** @brief The x component. Should be in range 0 -> 95.047 */
+    /** @brief The x component. Should be in range 0 -> 112 */
     double x;
     /** @brief The y component. Should be in range 0 -> 100 */
     double y;
-    /** @brief The z component. Should be in range 0 -> 108.883 */
+    /** @brief The z component. Should be in range 0 -> 123 */
     double z;
 };
 
@@ -53,12 +53,17 @@ extern const double COLRCV_XYZ_MIN_VALUE;
 
 /** @details The maximum value that the x component should have */
 extern const double COLRCV_XYZ_X_MAX_VALUE;
-
 /** @details The maximum value that the y component should have */
 extern const double COLRCV_XYZ_Y_MAX_VALUE;
-
 /** @details The maximum value that the z component should have */
 extern const double COLRCV_XYZ_Z_MAX_VALUE;
+
+/** @details Reference X value for an Observer of 2° and an Illuminant of D65 */
+extern const double COLRCV_XYZ_X_REF_VALUE;
+/** @details Reference Y value for an Observer of 2° and an Illuminant of D65 */
+extern const double COLRCV_XYZ_Y_REF_VALUE;
+/** @details Reference Z value for an Observer of 2° and an Illuminant of D65 */
+extern const double COLRCV_XYZ_Z_REF_VALUE;
 
 /**
  * @brief Checks that x component of a given `colrcv_xyz_t` struct is valid
@@ -121,7 +126,6 @@ colrcv_result_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz, colrcv_hsl_t* hsl);
  * @param xyz An XYZ colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab);
 

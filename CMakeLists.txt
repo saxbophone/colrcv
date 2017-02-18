@@ -97,6 +97,9 @@ set_target_properties(
     SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
+# link libcolrcv with C math library
+target_link_libraries(colrcv m)
+
 # test harness library
 add_library(unit_test_harness ${UNIT_TEST_HARNESS_SOURCES})
 
