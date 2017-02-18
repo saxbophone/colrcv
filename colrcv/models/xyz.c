@@ -14,6 +14,7 @@
 
 #include "../colrcv.h"
 #include "xyz.h"
+#include "lab.h"
 
 
 #ifdef __cplusplus
@@ -50,6 +51,11 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
         colrcv_xyz_y_is_valid(xyz) &&
         colrcv_xyz_z_is_valid(xyz)
     );
+}
+
+colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
+    // NOTE: Dummy implementation for now
+    lab->l = xyz.x;
 }
 
 #ifdef __cplusplus
