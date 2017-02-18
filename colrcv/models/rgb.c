@@ -55,7 +55,9 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb) {
 /* BEGIN HSL/HSV private support functions */
 
 // Scales down RGB amounts from 0->255 to 0->1
-static void scale_down_rgb(colrcv_rgb_t rgb, double* r, double*g, double* b) {
+static void scale_down_rgb(
+    colrcv_rgb_t rgb, double* restrict r, double* restrict g, double* restrict b
+) {
     *r = rgb.r / 255;
     *g = rgb.g / 255;
     *b = rgb.b / 255;
@@ -63,7 +65,8 @@ static void scale_down_rgb(colrcv_rgb_t rgb, double* r, double*g, double* b) {
 
 // sets the minimum, maximum and delta for a given set of rgb amounts
 static void get_min_max_delta(
-    double r, double g, double b, double* min, double* max, double* delta
+    double r, double g, double b,
+    double* restrict min, double* restrict max, double* restrict delta
 ) {
     *min = colrcv_min(r, colrcv_min(g, b));
     *max = colrcv_max(r, colrcv_max(g, b));
