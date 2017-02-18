@@ -11,6 +11,7 @@
  * of the Copyright holder.
  */
 #include <stdbool.h>
+#include <math.h>
 
 #include "../colrcv.h"
 #include "xyz.h"
@@ -53,9 +54,26 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
     );
 }
 
+// private helper function for colrcv_xyz_to_lab
+static double convert_xyz_component(double c) {
+    return (c > 0.008856) ? pow(c, (1.0 / 3)) : (7.787 * c) + (16 / 116);
+}
+
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
-    // NOTE: Dummy implementation for now
-    lab->l = xyz.x;
+    // TODO: Move these somewhere else
+    // These config values are takem from Tristimulus calculations
+    // Observer = 2°, Illuminant = D65
+    static const double ref_x = 95.047;
+    static const double ref_y = 100.0;
+    static const double ref_z = 108.883;
+    // skew and convert input values
+    const double x = convert_xyz_component(xyz.x / ref_x);
+    const double y = convert_xyz_component(xyz.y / ref_y);
+    const double z = convert_xyz_component(xyz.z / ref_z);
+    // convert to LAB ranges
+    lab->l = (116 * y) - 16;
+    lab->a = 500 * (x - y);
+    lab->b = 200 * (y - z);
 }
 
 #ifdef __cplusplus

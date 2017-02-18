@@ -55,7 +55,7 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
 }
 
 // private helper function for colrcv_lab_to_xyz
-static double normalise_component(double c) {
+static double convert_xyz_component(double c) {
     // get c cubed
     const double c_cubed = pow(c, 3.0);
     // normalised component depends on size of cubed component
@@ -75,9 +75,9 @@ colrcv_result_t colrcv_lab_to_xyz(colrcv_lab_t lab, colrcv_xyz_t* xyz) {
     const double x = lab.a / 500.0 + y;
     const double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
-    xyz->x = ref_x * normalise_component(x);
-    xyz->y = ref_y * normalise_component(y);
-    xyz->z = ref_z * normalise_component(z);
+    xyz->x = ref_x * convert_xyz_component(x);
+    xyz->y = ref_y * convert_xyz_component(y);
+    xyz->z = ref_z * convert_xyz_component(z);
 }
 
 #ifdef __cplusplus

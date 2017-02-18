@@ -197,19 +197,19 @@ static colrcv_test_result_t test_colrcv_xyz_to_lab(void) {
     struct xyz_to_lab_pair_t colours[4] = {
         {
             .input = { .x = 8.242, .y = 5.838, .z = 11.586, },
-            .output = { .l = 29, .a = 27.343, .b = -17.187, },
+            .output = { .l = 29, .a = 27.344, .b = -17.187, },
         },
         {
             .input = { .x = 22.563, .y = 25.961, .z = 6.95, },
-            .output = { .l = 58, .a = -9.375, .b = 47.656, },
+            .output = { .l = 58, .a = -9.373, .b = 47.657, },
         },
         {
             .input = { .x = 10.121, .y = 7.537, .z = 2.753, },
-            .output = { .l = 33, .a = 25.781, .b = 25.781, },
+            .output = { .l = 33, .a = 25.786, .b = 25.780, },
         },
         {
             .input = { .x = 67.402, .y = 64.066, .z = 5.168, },
-            .output = { .l = 84, .a = 14.843, .b = 100, },
+            .output = { .l = 84, .a = 14.841, .b = 100, },
         },
     };
     // flag to keep track of result
