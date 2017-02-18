@@ -13,9 +13,13 @@
  * of the Copyright holder.
  */
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "../unit_test_harness/harness.h"
+#include "support.h"
+
 #include "../colrcv/models/lab.h"
+#include "../colrcv/models/xyz.h"
 
 
 #ifdef __cplusplus
@@ -172,6 +176,71 @@ static colrcv_test_result_t test_colrcv_lab_is_valid_false(void) {
     return test;
 }
 
+/*
+ * An internal struct type used only in this test for storing pairs of input
+ * LAB and output XYZ colours
+ */
+struct lab_to_xyz_pair_t {
+    colrcv_lab_t input;
+    colrcv_xyz_t output;
+};
+
+/*
+ * Test the function colrcv_lab_to_xyz
+ * Function should return a correctly calculated XYZ colour for the given LAB
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_lab_to_xyz(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct lab_to_xyz_pair_t colours[4] = {
+        {
+            .input = { .l = 29, .a = 27.343, .b = -17.187, },
+            .output = { .x = 8.242, .y = 5.838, .z = 11.586, },
+        },
+        {
+            .input = { .l = 58, .a = -9.375, .b = 47.656, },
+            .output = { .x = 22.563, .y = 25.961, .z = 6.95, },
+        },
+        {
+            .input = { .l = 33, .a = 25.781, .b = 25.781, },
+            .output = { .x = 10.121, .y = 7.537, .z = 2.753, },
+        },
+        {
+            .input = { .l = 84, .a = 14.843, .b = 100, },
+            .output = { .x = 67.402, .y = 64.066, .z = 5.168, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(size_t i = 0; i < 4; i++) {
+        colrcv_xyz_t result;
+        colrcv_lab_to_xyz(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.x, colours[i].output.x) &&
+            almost_equal(result.y, colours[i].output.y) &&
+            almost_equal(result.z, colours[i].output.z)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.x, colours[i].output.y, colours[i].output.z,
+                result.x, result.y, result.z
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
 int main(void) {
     // initialise test suite
     colrcv_test_suite_t suite = colrcv_init_test_suite();
@@ -184,6 +253,7 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_lab_b_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_lab_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_lab_is_valid_false, &suite);
+    colrcv_add_test_case(test_colrcv_lab_to_xyz, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
     // return test suite status
