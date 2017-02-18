@@ -9,6 +9,9 @@
  * @brief This header file forward-declares (via typedef) all the data types
  * used to represent colours in different colour models.
  * @details This is necessary to avoid circular references between header files.
+ * @remarks There is no need to include this header file directly, and doing so
+ * does not reap any benefits. Use the colour-model specific header files to get
+ * the respective colour models types and functions declared within them.
  *
  * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
  * @date 2017
