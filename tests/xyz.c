@@ -198,7 +198,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_rgb(void) {
     struct xyz_to_rgb_pair_t colours[4] = {
         {
             .input = { .x = 50, .y = 25, .z = 65, },
-            .output = { .r = 244.86, .g = 27.79, .b = 212.79, },
+            .output = { .r = 244.859, .g = 27.792, .b = 212.788, },
         },
         {
             .input = { .x = 87, .y = 100, .z = 0, },
@@ -206,11 +206,11 @@ static colrcv_test_result_t test_colrcv_xyz_to_rgb(void) {
         },
         {
             .input = { .x = 1, .y = 2, .z = 1, },
-            .output = { .r = 0, .g = 46.84, .b = 20.1, },
+            .output = { .r = 0, .g = 46.835, .b = 20.104, },
         },
         {
             .input = { .x = 33, .y = 77, .z = 63, },
-            .output = { .r = 0, .g = 255, .b = 192.02, },
+            .output = { .r = 0, .g = 255, .b = 192.015, },
         },
     };
     // flag to keep track of result
