@@ -15,6 +15,7 @@
 
 #include "../colrcv.h"
 #include "xyz.h"
+#include "rgb.h"
 #include "lab.h"
 
 
@@ -57,6 +58,11 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
         colrcv_xyz_y_is_valid(xyz) &&
         colrcv_xyz_z_is_valid(xyz)
     );
+}
+
+colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
+    // NOTE: Dummy implementation
+    rgb->r = xyz.x;
 }
 
 // private helper function for colrcv_xyz_to_lab
