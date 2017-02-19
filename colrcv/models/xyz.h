@@ -99,7 +99,6 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz);
  * @param xyz An XYZ colour to be converted
  * @param[out] rgb The RGB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb);
 

@@ -11,11 +11,13 @@
  * of the Copyright holder.
  */
 #include <stdbool.h>
+#include <math.h>
 
 #include "../colrcv.h"
 #include "rgb.h"
 #include "hsv.h"
 #include "hsl.h"
+#include "xyz.h"
 
 
 #ifdef __cplusplus
@@ -52,7 +54,7 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb) {
     );
 }
 
-/* BEGIN HSL/HSV private support functions */
+/* BEGIN private support functions */
 
 // Scales down RGB amounts from 0->255 to 0->1
 static void scale_down_rgb(
@@ -98,7 +100,7 @@ static double get_hue_amount(
     return hue;
 }
 
-/* END HSL/HSV private support functions */
+/* END private support functions */
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=20#text20
 colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
@@ -147,6 +149,29 @@ colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
         // finally, set the hue
         hsl->h = get_hue_amount(r, g, b, max_channel, delta_channel);
     }
+}
+
+/*
+ * private function for translating an rgb component into the range needed for
+ * converting to XYZ
+ */
+static double convert_rgb_for_xyz(double c) {
+    return (c > 0.04045) ? pow((c + 0.055) / 1.055, 2.4) : (c / 12.92);
+}
+
+// Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=02#text2
+colrcv_result_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb, colrcv_xyz_t* xyz) {
+    double r, g, b;
+    // scale down each RGB channel
+    scale_down_rgb(rgb, &r, &g, &b);
+    // translate each channel
+    r = convert_rgb_for_xyz(r) * 100;
+    g = convert_rgb_for_xyz(g) * 100;
+    b = convert_rgb_for_xyz(b) * 100;
+    // apply matrix transforms
+    xyz->x = r * 0.4124 + g * 0.3576 + b * 0.1805;
+    xyz->y = r * 0.2126 + g * 0.7152 + b * 0.0722;
+    xyz->z = r * 0.0193 + g * 0.1192 + b * 0.9505;
 }
 
 #ifdef __cplusplus
