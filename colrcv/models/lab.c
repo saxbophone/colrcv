@@ -55,8 +55,7 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
 }
 
 // private helper function for colrcv_lab_to_xyz
-// NOTE: This is the inverse of the function of the same name in xyz.c
-static double convert_xyz_component(double c) {
+static double convert_lab_for_xyz(double c) {
     // get c cubed
     const double c_cubed = pow(c, 3.0);
     // converted component depends on size of cubed component
@@ -70,9 +69,9 @@ colrcv_result_t colrcv_lab_to_xyz(colrcv_lab_t lab, colrcv_xyz_t* xyz) {
     const double x = lab.a / 500.0 + y;
     const double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
-    xyz->x = COLRCV_XYZ_X_REF_VALUE * convert_xyz_component(x);
-    xyz->y = COLRCV_XYZ_Y_REF_VALUE * convert_xyz_component(y);
-    xyz->z = COLRCV_XYZ_Z_REF_VALUE * convert_xyz_component(z);
+    xyz->x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x);
+    xyz->y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y);
+    xyz->z = COLRCV_XYZ_Z_REF_VALUE * convert_lab_for_xyz(z);
 }
 
 #ifdef __cplusplus

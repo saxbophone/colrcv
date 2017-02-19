@@ -60,8 +60,7 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
 }
 
 // private helper function for colrcv_xyz_to_lab
-// NOTE: This is the inverse of the function of the same name in lab.c
-static double convert_xyz_component(double c) {
+static double convert_xyz_for_lab(double c) {
     // converted component needs the cube root of input if over a given size
     return (c > 0.008856) ? pow(c, (1.0 / 3)) : (7.787 * c) + (16 / 116);
 }
@@ -69,9 +68,9 @@ static double convert_xyz_component(double c) {
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=07#text7
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
     // skew and convert input values
-    const double x = convert_xyz_component(xyz.x / COLRCV_XYZ_X_REF_VALUE);
-    const double y = convert_xyz_component(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
-    const double z = convert_xyz_component(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
+    const double x = convert_xyz_for_lab(xyz.x / COLRCV_XYZ_X_REF_VALUE);
+    const double y = convert_xyz_for_lab(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
+    const double z = convert_xyz_for_lab(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
     // convert to LAB ranges
     lab->l = (116 * y) - 16;
     lab->a = 500 * (x - y);
