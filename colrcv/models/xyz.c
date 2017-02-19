@@ -67,7 +67,7 @@ static double convert_xyz_for_rgb(double c) {
 }
 
 // TODO: This will be added as a public library function later
-// NOTE: This bit (clamping) wasn't in EasyRGB's algorithm. A bit questionable.
+// XXX: This bit (clamping) wasn't in EasyRGB's algorithm. A bit questionable.
 static void clamp_rgb(colrcv_rgb_t* rgb) {
     rgb->r = (rgb->r > 255) ? 255 : rgb->r;
     rgb->r = (rgb->r < 0) ? 0 : rgb->r;

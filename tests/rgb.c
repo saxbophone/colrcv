@@ -21,6 +21,7 @@
 #include "../colrcv/models/rgb.h"
 #include "../colrcv/models/hsv.h"
 #include "../colrcv/models/hsl.h"
+#include "../colrcv/models/xyz.h"
 
 
 #ifdef __cplusplus
@@ -307,6 +308,71 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
     return test;
 }
 
+/*
+ * An internal struct type used only in this test for storing pairs of input
+ * RGB and output XYZ colours
+ */
+struct rgb_to_xyz_pair_t {
+    colrcv_rgb_t input;
+    colrcv_xyz_t output;
+};
+
+/*
+ * Test the function colrcv_rgb_to_xyz
+ * Function should return a correctly calculated XYZ colour for the given RGB
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_rgb_to_xyz(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct rgb_to_xyz_pair_t colours[4] = {
+        {
+            .input = { .r = 16, .g = 243, .b = 67, },
+            .output = { .x = 33.277, .y = 64.617, .z = 16.029, },
+        },
+        {
+            .input = { .r = 217, .g = 45, .b = 19, },
+            .output = { .x = 29.671, .y = 16.676, .z = 2.271, },
+        },
+        {
+            .input = { .r = 33, .g = 33, .b = 33, },
+            .output = { .x = 1.446, .y = 1.521, .z = 1.656, },
+        },
+        {
+            .input = { .r = 127, .g = 63, .b = 255, },
+            .output = { .x = 28.580, .y = 15.287, .z = 96.052, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(size_t i = 0; i < 4; i++) {
+        colrcv_xyz_t result;
+        colrcv_rgb_to_xyz(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.x, colours[i].output.x) &&
+            almost_equal(result.y, colours[i].output.y) &&
+            almost_equal(result.z, colours[i].output.z)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.x, colours[i].output.y, colours[i].output.z,
+                result.x, result.y, result.z
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
 int main(void) {
     // initialise test suite
     colrcv_test_suite_t suite = colrcv_init_test_suite();
@@ -321,6 +387,7 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_rgb_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_rgb_to_hsv, &suite);
     colrcv_add_test_case(test_colrcv_rgb_to_hsl, &suite);
+    colrcv_add_test_case(test_colrcv_rgb_to_xyz, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
     // return test suite status
