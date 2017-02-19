@@ -117,6 +117,15 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
     }
 }
 
+// Two-step conversion using HSV->RGB and RGB->HSL
+colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl) {
+    // convert to RGB first
+    colrcv_rgb_t rgb;
+    colrcv_hsv_to_rgb(hsv, &rgb);
+    // now convert to HSL
+    colrcv_rgb_to_hsl(rgb, hsl);
+}
+
 #ifdef __cplusplus
 } // extern "C"
 #endif
