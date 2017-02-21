@@ -101,7 +101,6 @@ colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb);
  * @param hsl A HSL colour to be converted
  * @param[out] hsv The HSV colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl, colrcv_hsv_t* hsv);
 
