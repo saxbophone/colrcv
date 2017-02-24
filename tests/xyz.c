@@ -228,7 +228,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_rgb(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%zu:\nExpected:\t(%Lf, %Lf, %Lf)\nGot:\t\t(%Lf, %Lf, %Lf)\n",
                 i,
                 colours[i].output.r, colours[i].output.g, colours[i].output.b,
                 result.r, result.g, result.b
@@ -293,7 +293,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_lab(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%zu:\nExpected:\t(%Lf, %Lf, %Lf)\nGot:\t\t(%Lf, %Lf, %Lf)\n",
                 i,
                 colours[i].output.l, colours[i].output.a, colours[i].output.b,
                 result.l, result.a, result.b

@@ -21,10 +21,10 @@
 extern "C"{
 #endif
 
-const double COLRCV_HSL_MIN_VALUE = 0;
-const double COLRCV_HSL_H_MAX_VALUE = 360;
-const double COLRCV_HSL_S_MAX_VALUE = 100;
-const double COLRCV_HSL_L_MAX_VALUE = 100;
+const long double COLRCV_HSL_MIN_VALUE = 0;
+const long double COLRCV_HSL_H_MAX_VALUE = 360;
+const long double COLRCV_HSL_S_MAX_VALUE = 100;
+const long double COLRCV_HSL_L_MAX_VALUE = 100;
 
 bool colrcv_hsl_h_is_valid(colrcv_hsl_t hsl) {
     return colrcv_range_valid(
@@ -54,7 +54,7 @@ bool colrcv_hsl_is_valid(colrcv_hsl_t hsl) {
 }
 
 // private helper function for colrcv_hsl_to_rgb
-static double hue_to_rgb(double a, double b, double h) {
+static long double hue_to_rgb(long double a, long double b, long double h) {
     if(h < 0) {
         h += 1;
     } else if(h > 1) {
@@ -80,13 +80,13 @@ colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb) {
         rgb->b = hsl.l / 100 * 255;
     } else {
         // down-scale all channels
-        const double h = hsl.h / 360;
-        const double s = hsl.s / 100;
-        const double l = hsl.l / 100;
+        const long double h = hsl.h / 360;
+        const long double s = hsl.s / 100;
+        const long double l = hsl.l / 100;
         // get temporary 'b'
-        const double temp_b = (l < 0.5) ? (l * (1 + s)) : ((l + s) - (s * l));
+        const long double temp_b = (l < 0.5) ? (l * (1 + s)) : ((l + s) - (s * l));
         // get temporary 'a'
-        const double temp_a = 2 * l - temp_b;
+        const long double temp_a = 2 * l - temp_b;
         // get component amounts with respect to hue and temporaries
         rgb->r = 255 * hue_to_rgb(temp_a, temp_b, h + (1.0 / 3));
         rgb->g = 255 * hue_to_rgb(temp_a, temp_b, h);

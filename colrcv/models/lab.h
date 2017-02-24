@@ -40,24 +40,24 @@ extern "C"{
  */
 struct colrcv_lab_t {
     /** @brief The lightness. Should be in range 0 -> 100 */
-    double l;
+    long double l;
     /** @brief The a component. Should be in range -100 -> 100 */
-    double a;
+    long double a;
     /** @brief The b component. Should be in range -100 -> 100 */
-    double b;
+    long double b;
 };
 
 /** @details The minimum value that the l component should have */
-extern const double COLRCV_LAB_L_MIN_VALUE;
+extern const long double COLRCV_LAB_L_MIN_VALUE;
 
 /** @details The minimum value that the a component should have */
-extern const double COLRCV_LAB_A_MIN_VALUE;
+extern const long double COLRCV_LAB_A_MIN_VALUE;
 
 /** @details The minimum value that the b component should have */
-extern const double COLRCV_LAB_B_MIN_VALUE;
+extern const long double COLRCV_LAB_B_MIN_VALUE;
 
 /** @details The maximum value that any of the components should have */
-extern const double COLRCV_LAB_MAX_VALUE;
+extern const long double COLRCV_LAB_MAX_VALUE;
 
 /**
  * @brief Checks that hue component of a given `colrcv_lab_t` struct is valid

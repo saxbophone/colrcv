@@ -22,10 +22,10 @@
 extern "C"{
 #endif
 
-const double COLRCV_LAB_L_MIN_VALUE = 0;
-const double COLRCV_LAB_A_MIN_VALUE = -100;
-const double COLRCV_LAB_B_MIN_VALUE = -100;
-const double COLRCV_LAB_MAX_VALUE = 100;
+const long double COLRCV_LAB_L_MIN_VALUE = 0;
+const long double COLRCV_LAB_A_MIN_VALUE = -100;
+const long double COLRCV_LAB_B_MIN_VALUE = -100;
+const long double COLRCV_LAB_MAX_VALUE = 100;
 
 bool colrcv_lab_l_is_valid(colrcv_lab_t lab) {
     return colrcv_range_valid(
@@ -55,9 +55,9 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
 }
 
 // private helper function for colrcv_lab_to_xyz
-static double convert_lab_for_xyz(double c) {
+static long double convert_lab_for_xyz(long double c) {
     // get c cubed
-    const double c_cubed = pow(c, 3.0);
+    const long double c_cubed = pow(c, 3.0);
     // converted component depends on size of cubed component
     return (c_cubed > 0.008856) ? c_cubed : ((c - 16.0 / 116.0) / 7.787);
 }
@@ -65,9 +65,9 @@ static double convert_lab_for_xyz(double c) {
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=08#text8
 colrcv_result_t colrcv_lab_to_xyz(colrcv_lab_t lab, colrcv_xyz_t* xyz) {
     // skew input values
-    const double y = (lab.l + 16.0) / 116.0;
-    const double x = lab.a / 500.0 + y;
-    const double z = y - lab.b / 200.0;
+    const long double y = (lab.l + 16.0) / 116.0;
+    const long double x = lab.a / 500.0 + y;
+    const long double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
     xyz->x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x);
     xyz->y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y);

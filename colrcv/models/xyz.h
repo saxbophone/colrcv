@@ -41,29 +41,29 @@ extern "C"{
  */
 struct colrcv_xyz_t {
     /** @brief The x component. Should be in range 0 -> 112 */
-    double x;
+    long double x;
     /** @brief The y component. Should be in range 0 -> 100 */
-    double y;
+    long double y;
     /** @brief The z component. Should be in range 0 -> 123 */
-    double z;
+    long double z;
 };
 
 /** @details The minimum value that any of the components should have */
-extern const double COLRCV_XYZ_MIN_VALUE;
+extern const long double COLRCV_XYZ_MIN_VALUE;
 
 /** @details The maximum value that the x component should have */
-extern const double COLRCV_XYZ_X_MAX_VALUE;
+extern const long double COLRCV_XYZ_X_MAX_VALUE;
 /** @details The maximum value that the y component should have */
-extern const double COLRCV_XYZ_Y_MAX_VALUE;
+extern const long double COLRCV_XYZ_Y_MAX_VALUE;
 /** @details The maximum value that the z component should have */
-extern const double COLRCV_XYZ_Z_MAX_VALUE;
+extern const long double COLRCV_XYZ_Z_MAX_VALUE;
 
 /** @details Reference X value for an Observer of 2° and an Illuminant of D65 */
-extern const double COLRCV_XYZ_X_REF_VALUE;
+extern const long double COLRCV_XYZ_X_REF_VALUE;
 /** @details Reference Y value for an Observer of 2° and an Illuminant of D65 */
-extern const double COLRCV_XYZ_Y_REF_VALUE;
+extern const long double COLRCV_XYZ_Y_REF_VALUE;
 /** @details Reference Z value for an Observer of 2° and an Illuminant of D65 */
-extern const double COLRCV_XYZ_Z_REF_VALUE;
+extern const long double COLRCV_XYZ_Z_REF_VALUE;
 
 /**
  * @brief Checks that x component of a given `colrcv_xyz_t` struct is valid

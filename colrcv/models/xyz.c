@@ -23,15 +23,15 @@
 extern "C"{
 #endif
 
-const double COLRCV_XYZ_MIN_VALUE = 0;
+const long double COLRCV_XYZ_MIN_VALUE = 0;
 
-const double COLRCV_XYZ_X_MAX_VALUE = 112;
-const double COLRCV_XYZ_Y_MAX_VALUE = 100;
-const double COLRCV_XYZ_Z_MAX_VALUE = 123;
+const long double COLRCV_XYZ_X_MAX_VALUE = 112;
+const long double COLRCV_XYZ_Y_MAX_VALUE = 100;
+const long double COLRCV_XYZ_Z_MAX_VALUE = 123;
 
-const double COLRCV_XYZ_X_REF_VALUE = 95.047;
-const double COLRCV_XYZ_Y_REF_VALUE = 100.0;
-const double COLRCV_XYZ_Z_REF_VALUE = 108.883;
+const long double COLRCV_XYZ_X_REF_VALUE = 95.047;
+const long double COLRCV_XYZ_Y_REF_VALUE = 100.0;
+const long double COLRCV_XYZ_Z_REF_VALUE = 108.883;
 
 bool colrcv_xyz_x_is_valid(colrcv_xyz_t xyz) {
     return colrcv_range_valid(
@@ -62,7 +62,7 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
 
 /* BEGIN private helper functions for colrcv_xyz_to_rgb */
 
-static double convert_xyz_for_rgb(double c) {
+static long double convert_xyz_for_rgb(long double c) {
     return (c > 0.0031308) ? (1.055 * pow(c, 1.0 / 2.4) - 0.055) : (12.92 * c);
 }
 
@@ -82,13 +82,13 @@ static void clamp_rgb(colrcv_rgb_t* rgb) {
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=01#text1
 colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
     // shrink larger numbers downs
-    const double x = xyz.x / 100.0;
-    const double y = xyz.y / 100.0;
-    const double z = xyz.z / 100.0;
+    const long double x = xyz.x / 100.0;
+    const long double y = xyz.y / 100.0;
+    const long double z = xyz.z / 100.0;
     // multiplex the values
-    const double r = x *  3.2406 + y * -1.5372 + z * -0.4986;
-    const double g = x * -0.9689 + y *  1.8758 + z *  0.0415;
-    const double b = x *  0.0557 + y * -0.2040 + z *  1.0570;
+    const long double r = x *  3.2406 + y * -1.5372 + z * -0.4986;
+    const long double g = x * -0.9689 + y *  1.8758 + z *  0.0415;
+    const long double b = x *  0.0557 + y * -0.2040 + z *  1.0570;
     // convert components and upscale
     rgb->r = convert_xyz_for_rgb(r) * 255.0;
     rgb->g = convert_xyz_for_rgb(g) * 255.0;
@@ -98,7 +98,7 @@ colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
 }
 
 // private helper function for colrcv_xyz_to_lab
-static double convert_xyz_for_lab(double c) {
+static long double convert_xyz_for_lab(long double c) {
     // converted component needs the cube root of input if over a given size
     return (c > 0.008856) ? pow(c, (1.0 / 3)) : (7.787 * c) + (16.0 / 116);
 }
@@ -106,9 +106,9 @@ static double convert_xyz_for_lab(double c) {
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=07#text7
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
     // skew and convert input values
-    const double x = convert_xyz_for_lab(xyz.x / COLRCV_XYZ_X_REF_VALUE);
-    const double y = convert_xyz_for_lab(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
-    const double z = convert_xyz_for_lab(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
+    const long double x = convert_xyz_for_lab(xyz.x / COLRCV_XYZ_X_REF_VALUE);
+    const long double y = convert_xyz_for_lab(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
+    const long double z = convert_xyz_for_lab(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
     // convert to LAB ranges
     lab->l = (116 * y) - 16;
     lab->a = 500 * (x - y);

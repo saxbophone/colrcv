@@ -24,8 +24,8 @@
 extern "C"{
 #endif
 
-const double COLRCV_RGB_MIN_VALUE = 0;
-const double COLRCV_RGB_MAX_VALUE = 255;
+const long double COLRCV_RGB_MIN_VALUE = 0;
+const long double COLRCV_RGB_MAX_VALUE = 255;
 
 bool colrcv_rgb_r_is_valid(colrcv_rgb_t rgb) {
     return colrcv_range_valid(
@@ -58,7 +58,7 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb) {
 
 // Scales down RGB amounts from 0->255 to 0->1
 static void scale_down_rgb(
-    colrcv_rgb_t rgb, double* restrict r, double* restrict g, double* restrict b
+    colrcv_rgb_t rgb, long double* restrict r, long double* restrict g, long double* restrict b
 ) {
     *r = rgb.r / 255;
     *g = rgb.g / 255;
@@ -67,8 +67,8 @@ static void scale_down_rgb(
 
 // sets the minimum, maximum and delta for a given set of rgb amounts
 static void get_min_max_delta(
-    double r, double g, double b,
-    double* restrict min, double* restrict max, double* restrict delta
+    long double r, long double g, long double b,
+    long double* restrict min, long double* restrict max, long double* restrict delta
 ) {
     *min = colrcv_min(r, colrcv_min(g, b));
     *max = colrcv_max(r, colrcv_max(g, b));
@@ -76,12 +76,12 @@ static void get_min_max_delta(
 }
 
 // returns the hue amount of HSV/HSL for given r, g, b, max and delta
-static double get_hue_amount(
-    double r, double g, double b, double max, double delta
+static long double get_hue_amount(
+    long double r, long double g, long double b, long double max, long double delta
 ) {
     // set the hue based on delta and which channel had the highest value
     // (http://wiki.secondlife.com/wiki/Color_conversion_scripts)
-    double hue;
+    long double hue;
     if(r == max) {
         hue = (g - b) / delta;
     } else if(g == max) {
@@ -104,7 +104,7 @@ static double get_hue_amount(
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=20#text20
 colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
-    double r, g, b, min_channel, max_channel, delta_channel;
+    long double r, g, b, min_channel, max_channel, delta_channel;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
     // get min and max of these channels and the delta of min and max
@@ -125,7 +125,7 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=18#text18
 colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
-    double r, g, b, min_channel, max_channel, delta_channel;
+    long double r, g, b, min_channel, max_channel, delta_channel;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
     // get min and max of these channels and the delta of min and max
@@ -164,13 +164,13 @@ colrcv_result_t colrcv_rgb_to_lab(colrcv_rgb_t rgb, colrcv_lab_t* lab) {
  * private function for translating an rgb component into the range needed for
  * converting to XYZ
  */
-static double convert_rgb_for_xyz(double c) {
+static long double convert_rgb_for_xyz(long double c) {
     return (c > 0.04045) ? pow((c + 0.055) / 1.055, 2.4) : (c / 12.92);
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=02#text2
 colrcv_result_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb, colrcv_xyz_t* xyz) {
-    double r, g, b;
+    long double r, g, b;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
     // translate each channel

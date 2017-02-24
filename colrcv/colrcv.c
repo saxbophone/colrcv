@@ -27,15 +27,15 @@ const colrcv_version_t COLRCV_VERSION = {
     .string = COLRCV_VERSION_STRING,
 };
 
-bool colrcv_range_valid(double min, double val, double max) {
+bool colrcv_range_valid(long double min, long double val, long double max) {
     return ((min <= val) && (val <= max));
 }
 
-double colrcv_min(double a, double b) {
+long double colrcv_min(long double a, long double b) {
     return (a < b) ? a : b;
 }
 
-double colrcv_max(double a, double b) {
+long double colrcv_max(long double a, long double b) {
     return (a > b) ? a : b;
 }
 

@@ -63,19 +63,19 @@ typedef void colrcv_result_t;
  * @returns `true` if the condition is satisfied
  * @returns `false` if the condition is not satisfied
  */
-bool colrcv_range_valid(double min, double val, double max);
+bool colrcv_range_valid(long double min, long double val, long double max);
 
 /**
  * @brief Get the smallest of two given values
  * @returns The smallest value
  */
-double colrcv_min(double a, double b);
+long double colrcv_min(long double a, long double b);
 
 /**
  * @brief Get the largest of two given values
  * @returns The largest value
  */
-double colrcv_max(double a, double b);
+long double colrcv_max(long double a, long double b);
 
 #ifdef __cplusplus
 } // extern "C"

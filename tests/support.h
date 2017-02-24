@@ -23,15 +23,15 @@ extern "C"{
 #endif
 
 // the tolerance which `almost_equal` compares to - 3d.p. is good enough
-const double ALMOST = 0.001;
+const long double ALMOST = 0.001;
 
 /*
  * compares two fractional numbers for 'almost equality' - defined as `value`
  * being within the range +/-`ALMOST` either side of `check`.
  */
-bool almost_equal(double value, double check);
+bool almost_equal(long double value, long double check);
 
-bool almost_equal(double value, double check) {
+bool almost_equal(long double value, long double check) {
     return (((check - ALMOST) <= value) && (value <= (check + ALMOST)));
 }
 

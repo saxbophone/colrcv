@@ -40,24 +40,24 @@ extern "C"{
  */
 struct colrcv_hsl_t {
     /** @brief The hue. Should be in range 0 -> 360 */
-    double h;
+    long double h;
     /** @brief The saturation. Should be in range 0 -> 100 */
-    double s;
+    long double s;
     /** @brief The lightness. Should be in range 0 -> 100 */
-    double l;
+    long double l;
 };
 
 /** @details The minimum value that any of the components should have */
-extern const double COLRCV_HSL_MIN_VALUE;
+extern const long double COLRCV_HSL_MIN_VALUE;
 
 /** @details The maximum value that the h component should have */
-extern const double COLRCV_HSL_H_MAX_VALUE;
+extern const long double COLRCV_HSL_H_MAX_VALUE;
 
 /** @details The maximum value that the s component should have */
-extern const double COLRCV_HSL_S_MAX_VALUE;
+extern const long double COLRCV_HSL_S_MAX_VALUE;
 
 /** @details The maximum value that the l component should have */
-extern const double COLRCV_HSL_L_MAX_VALUE;
+extern const long double COLRCV_HSL_L_MAX_VALUE;
 
 /**
  * @brief Checks that hue component of a given `colrcv_hsl_t` struct is valid

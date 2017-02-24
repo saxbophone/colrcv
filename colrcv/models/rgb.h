@@ -41,18 +41,18 @@ extern "C"{
  */
 struct colrcv_rgb_t {
     /** @brief The red component. Should be in range 0 -> 255 */
-    double r;
+    long double r;
     /** @brief The green component. Should be in range 0 -> 255 */
-    double g;
+    long double g;
     /** @brief The blue component. Should be in range 0 -> 255 */
-    double b;
+    long double b;
 };
 
 /** @details The minimum value that any of the components should have */
-extern const double COLRCV_RGB_MIN_VALUE;
+extern const long double COLRCV_RGB_MIN_VALUE;
 
 /** @details The maximum value that any of the components should have */
-extern const double COLRCV_RGB_MAX_VALUE;
+extern const long double COLRCV_RGB_MAX_VALUE;
 
 /**
  * @brief Checks that red component of a given `colrcv_rgb_t` struct is valid
