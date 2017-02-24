@@ -109,7 +109,6 @@ colrcv_result_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl, colrcv_hsv_t* hsv);
  * @param hsl A HSL colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_hsl_to_lab(colrcv_hsl_t hsl, colrcv_lab_t* lab);
 

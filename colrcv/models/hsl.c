@@ -15,6 +15,7 @@
 #include "../colrcv.h"
 #include "hsl.h"
 #include "rgb.h"
+#include "lab.h"
 
 
 #ifdef __cplusplus
@@ -101,6 +102,15 @@ colrcv_result_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl, colrcv_hsv_t* hsv) {
     colrcv_hsl_to_rgb(hsl, &rgb);
     // convert to HSV
     colrcv_rgb_to_hsv(rgb, hsv);
+}
+
+// Two-step conversion using HSL->RGB and RGB->LAB
+colrcv_result_t colrcv_hsl_to_lab(colrcv_hsl_t hsl, colrcv_lab_t* lab) {
+    // convert to RGB
+    colrcv_rgb_t rgb;
+    colrcv_hsl_to_rgb(hsl, &rgb);
+    // convert to HSV
+    colrcv_rgb_to_lab(rgb, lab);
 }
 
 #ifdef __cplusplus
