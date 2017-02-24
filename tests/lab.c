@@ -19,6 +19,7 @@
 #include "support.h"
 
 #include "../colrcv/models/lab.h"
+#include "../colrcv/models/rgb.h"
 #include "../colrcv/models/xyz.h"
 
 
@@ -178,6 +179,71 @@ static colrcv_test_result_t test_colrcv_lab_is_valid_false(void) {
 
 /*
  * An internal struct type used only in this test for storing pairs of input
+ * LAB and output RGB colours
+ */
+struct lab_to_rgb_pair_t {
+    colrcv_lab_t input;
+    colrcv_rgb_t output;
+};
+
+/*
+ * Test the function colrcv_lab_to_rgb
+ * Function should return a correctly calculated RGB colour for the given LAB
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_lab_to_rgb(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct lab_to_rgb_pair_t colours[4] = {
+        {
+            .input = { .l = 29, .a = 27.343, .b = -17.187, },
+            .output = { .r = 97.014, .g = 52.097, .b = 95.28, },
+        },
+        {
+            .input = { .l = 58, .a = -9.375, .b = 47.656, },
+            .output = { .r = 148.296, .g = 142.18, .b = 50.972, },
+        },
+        {
+            .input = { .l = 33, .a = 25.781, .b = 25.781, },
+            .output = { .r = 123.089, .g = 59.507, .b = 37.976, },
+        },
+        {
+            .input = { .l = 84, .a = 14.843, .b = 100, },
+            .output = { .r = 255, .g = 195.812, .b = 0, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(size_t i = 0; i < 4; i++) {
+        colrcv_rgb_t result;
+        colrcv_lab_to_rgb(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.r, colours[i].output.r) &&
+            almost_equal(result.g, colours[i].output.g) &&
+            almost_equal(result.b, colours[i].output.b)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.r, colours[i].output.g, colours[i].output.b,
+                result.r, result.g, result.b
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
+/*
+ * An internal struct type used only in this test for storing pairs of input
  * LAB and output XYZ colours
  */
 struct lab_to_xyz_pair_t {
@@ -253,6 +319,7 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_lab_b_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_lab_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_lab_is_valid_false, &suite);
+    colrcv_add_test_case(test_colrcv_lab_to_rgb, &suite);
     colrcv_add_test_case(test_colrcv_lab_to_xyz, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
