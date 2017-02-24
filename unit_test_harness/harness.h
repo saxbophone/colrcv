@@ -61,6 +61,9 @@ typedef struct colrcv_test_suite_t {
 // returns a blank test suite
 colrcv_test_suite_t colrcv_init_test_suite(void);
 
+// tears down and free()s a test suite
+void colrcv_free_test_suite(colrcv_test_suite_t suite);
+
 /*
  * adds a function as a test case to a test suite
  * function must return a test_result_t struct and take no arguments

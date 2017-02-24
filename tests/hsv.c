@@ -457,6 +457,8 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_hsv_to_xyz, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
+    // free test suite
+    colrcv_free_test_suite(suite);
     // return test suite status
     return suite.result ? 0 : 1;
 }
