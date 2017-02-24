@@ -54,6 +54,15 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
     );
 }
 
+// Two-step conversion using LAB->XYZ and XYZ->RGB
+colrcv_result_t colrcv_lab_to_rgb(colrcv_lab_t lab, colrcv_rgb_t* rgb) {
+    // convert to XYZ first
+    colrcv_xyz_t xyz;
+    colrcv_lab_to_xyz(lab, &xyz);
+    // now convert to RGB
+    colrcv_xyz_to_rgb(xyz, rgb);
+}
+
 // private helper function for colrcv_lab_to_xyz
 static double convert_lab_for_xyz(double c) {
     // get c cubed

@@ -117,6 +117,33 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
     }
 }
 
+// Two-step conversion using HSV->RGB and RGB->HSL
+colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl) {
+    // convert to RGB first
+    colrcv_rgb_t rgb;
+    colrcv_hsv_to_rgb(hsv, &rgb);
+    // now convert to HSL
+    colrcv_rgb_to_hsl(rgb, hsl);
+}
+
+// Two-step conversion using HSV->RGB and RGB->LAB
+colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab) {
+    // convert to rgb
+    colrcv_rgb_t rgb;
+    colrcv_hsv_to_rgb(hsv, &rgb);
+    // convert to LAB
+    colrcv_rgb_to_lab(rgb, lab);
+}
+
+// Two-step conversion using HSV->RGB and RGB->XYZ
+colrcv_result_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv, colrcv_xyz_t* xyz) {
+    // convert to rgb
+    colrcv_rgb_t rgb;
+    colrcv_hsv_to_rgb(hsv, &rgb);
+    // convert to XYZ
+    colrcv_rgb_to_xyz(rgb, xyz);
+}
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

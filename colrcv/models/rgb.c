@@ -151,6 +151,15 @@ colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl) {
     }
 }
 
+// Two-step conversion using RGB->XYZ and XYZ->LAB
+colrcv_result_t colrcv_rgb_to_lab(colrcv_rgb_t rgb, colrcv_lab_t* lab) {
+    // convert to xyz first
+    colrcv_xyz_t xyz;
+    colrcv_rgb_to_xyz(rgb, &xyz);
+    // now convert xyz to lab
+    colrcv_xyz_to_lab(xyz, lab);
+}
+
 /*
  * private function for translating an rgb component into the range needed for
  * converting to XYZ

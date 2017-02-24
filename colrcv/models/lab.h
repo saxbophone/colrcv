@@ -93,7 +93,6 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab);
  * @param lab A LAB colour to be converted
  * @param[out] rgb The RGB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
- * @private @warning Not Implemented
  */
 colrcv_result_t colrcv_lab_to_rgb(colrcv_lab_t lab, colrcv_rgb_t* rgb);
 
