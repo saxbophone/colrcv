@@ -14,6 +14,7 @@
  */
 #include <stdbool.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 #include "../unit_test_harness/harness.h"
 #include "support.h"
@@ -230,7 +231,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.h, colours[i].output.s, colours[i].output.v,
                 result.h, result.s, result.v
@@ -295,7 +296,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.h, colours[i].output.s, colours[i].output.l,
                 result.h, result.s, result.l
@@ -360,7 +361,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_lab(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.l, colours[i].output.a, colours[i].output.b,
                 result.l, result.a, result.b
@@ -425,7 +426,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_xyz(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.x, colours[i].output.y, colours[i].output.z,
                 result.x, result.y, result.z
