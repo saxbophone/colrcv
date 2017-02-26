@@ -14,6 +14,7 @@
  */
 #include <stdbool.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 #include "../unit_test_harness/harness.h"
 #include "support.h"
@@ -217,7 +218,7 @@ static colrcv_test_result_t test_colrcv_lab_to_rgb(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_rgb_t result;
         colrcv_lab_to_rgb(colours[i].input, &result);
         bool conversion_ok = (
@@ -228,7 +229,7 @@ static colrcv_test_result_t test_colrcv_lab_to_rgb(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.r, colours[i].output.g, colours[i].output.b,
                 result.r, result.g, result.b
@@ -282,7 +283,7 @@ static colrcv_test_result_t test_colrcv_lab_to_xyz(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_xyz_t result;
         colrcv_lab_to_xyz(colours[i].input, &result);
         bool conversion_ok = (
@@ -293,7 +294,7 @@ static colrcv_test_result_t test_colrcv_lab_to_xyz(void) {
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
-                "Colour #%zu:\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
                 i,
                 colours[i].output.x, colours[i].output.y, colours[i].output.z,
                 result.x, result.y, result.z
