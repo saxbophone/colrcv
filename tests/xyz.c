@@ -218,7 +218,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_rgb(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_rgb_t result;
         colrcv_xyz_to_rgb(colours[i].input, &result);
         bool conversion_ok = (
@@ -283,7 +283,7 @@ static colrcv_test_result_t test_colrcv_xyz_to_lab(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_lab_t result;
         colrcv_xyz_to_lab(colours[i].input, &result);
         bool conversion_ok = (

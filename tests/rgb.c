@@ -220,7 +220,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_hsv_t result;
         colrcv_rgb_to_hsv(colours[i].input, &result);
         bool conversion_ok = (
@@ -285,7 +285,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_hsl_t result;
         colrcv_rgb_to_hsl(colours[i].input, &result);
         bool conversion_ok = (
@@ -350,7 +350,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_lab(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_lab_t result;
         colrcv_rgb_to_lab(colours[i].input, &result);
         bool conversion_ok = (
@@ -415,7 +415,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_xyz(void) {
     bool success = true;
 
     // convert each colour and compare with output
-    for(size_t i = 0; i < 4; i++) {
+    for(uint8_t i = 0; i < 4; i++) {
         colrcv_xyz_t result;
         colrcv_rgb_to_xyz(colours[i].input, &result);
         bool conversion_ok = (
