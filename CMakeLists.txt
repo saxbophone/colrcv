@@ -17,6 +17,41 @@
 # begin basic metadata
 cmake_minimum_required(VERSION 3.0)
 
+set(CMAKE_INSTALL_PREFIX "/home/joshua/Dev_Build/osxcross/target/SDK/MacOSX10.11.sdk/usr")
+
+set(CMAKE_SYSTEM_NAME Darwin)
+set(TOOLCHAIN_PREFIX x86_64-apple-darwin15)
+
+# cross compilers to use for C and C++
+set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}-clang)
+set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}-clang++)
+
+# target environment on the build host system
+#   set 1st to dir with the cross compiler's C/C++ headers/libs
+set(CMAKE_FIND_ROOT_PATH "/home/joshua/Dev_Build/osxcross/target/SDK/MacOSX10.11.sdk/usr/include/")
+
+# modify default behavior of FIND_XXX() commands to
+# search for headers/libs in the target environment and
+# search for programs in the build host environment
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
+
+set(CMAKE_FIND_ROOT_PATH "/home/joshua/Dev_Build/osxcross/target/macports/pkgs/opt/local/")
+
+set(CMAKE_OSX_SYSROOT "/home/joshua/Dev_Build/osxcross/target/SDK/MacOSX10.11.sdk/")
+
+set(CMAKE_INSTALL_FRAMEWORK_PREFIX "/home/joshua/Dev_Build/osxcross/target/SDK/MacOSX10.11.sdk/System/Library/Frameworks")
+
+set(SFML_OS_MACOSX BOOL TRUE)
+
+set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG "-Wl,-rpath,")
+set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG_SEP ":")
+
+set(CMAKE_INSTALL_NAME_DIR "@rpath")
+set(CMAKE_INSTALL_RPATH ...)
+
+
 project(colrcv VERSION 0.1.0 LANGUAGES C)
 
 # set default C standard to use (C99) if not already set
