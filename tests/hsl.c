@@ -228,6 +228,7 @@ static colrcv_test_result_t test_colrcv_hsl_to_rgb(void) {
             almost_equal(result.g, colours[i].output.g) &&
             almost_equal(result.b, colours[i].output.b)
         );
+        bool is_valid = colrcv_rgb_is_valid(result);
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
@@ -237,8 +238,12 @@ static colrcv_test_result_t test_colrcv_hsl_to_rgb(void) {
                 result.r, result.g, result.b
             );
         }
+        if(!is_valid) {
+            // also log error if output values are out of range
+            printf("Output RGB values out of range\n");
+        }
         // OR to success flag
-        success = success && conversion_ok;
+        success = success && conversion_ok && is_valid;
     }
 
     test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -293,6 +298,7 @@ static colrcv_test_result_t test_colrcv_hsl_to_hsv(void) {
             almost_equal(result.s, colours[i].output.s) &&
             almost_equal(result.v, colours[i].output.v)
         );
+        bool is_valid = colrcv_hsv_is_valid(result);
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
@@ -302,8 +308,12 @@ static colrcv_test_result_t test_colrcv_hsl_to_hsv(void) {
                 result.h, result.s, result.v
             );
         }
+        if(!is_valid) {
+            // also log error if output values are out of range
+            printf("Output HSV values out of range\n");
+        }
         // OR to success flag
-        success = success && conversion_ok;
+        success = success && conversion_ok && is_valid;
     }
 
     test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -358,6 +368,7 @@ static colrcv_test_result_t test_colrcv_hsl_to_lab(void) {
             almost_equal(result.a, colours[i].output.a) &&
             almost_equal(result.b, colours[i].output.b)
         );
+        bool is_valid = colrcv_lab_is_valid(result);
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
@@ -367,8 +378,12 @@ static colrcv_test_result_t test_colrcv_hsl_to_lab(void) {
                 result.l, result.a, result.b
             );
         }
+        if(!is_valid) {
+            // also log error if output values are out of range
+            printf("Output LAB values out of range\n");
+        }
         // OR to success flag
-        success = success && conversion_ok;
+        success = success && conversion_ok && is_valid;
     }
 
     test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
@@ -423,6 +438,7 @@ static colrcv_test_result_t test_colrcv_hsl_to_xyz(void) {
             almost_equal(result.y, colours[i].output.y) &&
             almost_equal(result.z, colours[i].output.z)
         );
+        bool is_valid = colrcv_xyz_is_valid(result);
         // print out result and expected output if not equal
         if(!conversion_ok) {
             printf(
@@ -432,8 +448,12 @@ static colrcv_test_result_t test_colrcv_hsl_to_xyz(void) {
                 result.x, result.y, result.z
             );
         }
+        if(!is_valid) {
+            // also log error if output values are out of range
+            printf("Output XYZ values out of range\n");
+        }
         // OR to success flag
-        success = success && conversion_ok;
+        success = success && conversion_ok && is_valid;
     }
 
     test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
