@@ -9,7 +9,7 @@
  * @brief This header file defines the data types for representing colours in
  * the HSV model, and functions for manipulating it.
  *
- * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
+ * @author Joshua Saxby `<joshua.a.saxby+TNOPLuc8vM==@gmail.com>`
  * @date 2017
  *
  * @copyright Copyright (C) Joshua Saxby 2017
@@ -20,6 +20,8 @@
  * @copyright
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
+ *
+ * @since `v0.1.0`
  */
 #ifndef SAXBOPHONE_COLRCV_MODELS_HSV_H
 #define SAXBOPHONE_COLRCV_MODELS_HSV_H
@@ -37,6 +39,7 @@ extern "C"{
 /**
  * @brief Used to represent a HSV colour
  * @details This is the Hue/Saturation/Value colour model
+ * @since `v0.1.0`
  */
 struct colrcv_hsv_t {
     /** @brief The hue. Should be in range 0 -> 360 */
@@ -47,22 +50,35 @@ struct colrcv_hsv_t {
     double v;
 };
 
-/** @details The minimum value that any of the components should have */
+/**
+ * @details The minimum value that any of the components should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_HSV_MIN_VALUE;
 
-/** @details The maximum value that the h component should have */
+/**
+ * @details The maximum value that the h component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_HSV_H_MAX_VALUE;
 
-/** @details The maximum value that the s component should have */
+/**
+ * @details The maximum value that the s component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_HSV_S_MAX_VALUE;
 
-/** @details The maximum value that the v component should have */
+/**
+ * @details The maximum value that the v component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_HSV_V_MAX_VALUE;
 
 /**
  * @brief Checks that hue component of a given `colrcv_hsv_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_hsv_h_is_valid(colrcv_hsv_t hsv);
 
@@ -71,6 +87,7 @@ bool colrcv_hsv_h_is_valid(colrcv_hsv_t hsv);
  * valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_hsv_s_is_valid(colrcv_hsv_t hsv);
 
@@ -78,6 +95,7 @@ bool colrcv_hsv_s_is_valid(colrcv_hsv_t hsv);
  * @brief Checks that value component of a given `colrcv_hsv_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_hsv_v_is_valid(colrcv_hsv_t hsv);
 
@@ -85,6 +103,7 @@ bool colrcv_hsv_v_is_valid(colrcv_hsv_t hsv);
  * @brief Checks that the components of a given `colrcv_hsv_t` struct are valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_hsv_is_valid(colrcv_hsv_t hsv);
 
@@ -93,6 +112,7 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv);
  * @param hsv A HSV colour to be converted
  * @param[out] rgb The RGB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb);
 
@@ -101,6 +121,7 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb);
  * @param hsv A HSV colour to be converted
  * @param[out] hsl The HSL colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl);
 
@@ -109,6 +130,7 @@ colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl);
  * @param hsv A HSV colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab);
 
@@ -117,6 +139,7 @@ colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab);
  * @param hsv A HSV colour to be converted
  * @param[out] xyz The XYZ colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv, colrcv_xyz_t* xyz);
 

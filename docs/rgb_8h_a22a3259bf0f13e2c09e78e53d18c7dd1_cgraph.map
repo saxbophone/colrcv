@@ -1,0 +1,4 @@
+<map id="colrcv_rgb_to_lab" name="colrcv_rgb_to_lab">
+<area shape="rect" id="node2" href="$rgb_8h.html#a620129830fc7c461565a4966a8c472da" title="Converts an RGB colour to an XYZ colour. " alt="" coords="177,5,305,32"/>
+<area shape="rect" id="node3" href="$xyz_8h.html#a28856340f07e49165673cca9fd6b0835" title="Converts an XYZ colour to a LAB colour. " alt="" coords="178,56,305,83"/>
+</map>

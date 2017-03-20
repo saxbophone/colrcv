@@ -68,3 +68,5 @@ CTestTestfile.cmake
 build/*
 # explicitly allow build directory .gitkeep file
 !build/.gitkeep
+# allow any files in docs/*
+!docs/*

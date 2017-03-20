@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">colrcv
-   &#160;<span id="projectnumber">v0.0</span>
+   &#160;<span id="projectnumber">v0.2.0</span>
    </div>
    <div id="projectbrief">C Library for converting Colours between different Colour Models</div>
   </td>
@@ -104,8 +104,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Include dependency graph for colrcv.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="colrcv_8h__incl.png" border="0" usemap="#colrcv_2colrcv_8h" alt=""/></div>
-<map name="colrcv_2colrcv_8h" id="colrcv_2colrcv_8h">
-</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -151,20 +149,20 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aa0e52e5b9986d745f510a1d54a133771"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0e52e5b9986d745f510a1d54a133771"></a>
-const <a class="el" href="structcolrcv__version__t.html">colrcv_version_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="colrcv_8h.html#aa0e52e5b9986d745f510a1d54a133771">COLRCV_VERSION</a></td></tr>
-<tr class="memdesc:aa0e52e5b9986d745f510a1d54a133771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the current version of colrcv. <br /></td></tr>
+<tr class="memitem:aa0e52e5b9986d745f510a1d54a133771"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structcolrcv__version__t.html">colrcv_version_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="colrcv_8h.html#aa0e52e5b9986d745f510a1d54a133771">COLRCV_VERSION</a></td></tr>
+<tr class="memdesc:aa0e52e5b9986d745f510a1d54a133771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the current version of colrcv.  <a href="#aa0e52e5b9986d745f510a1d54a133771">More...</a><br /></td></tr>
 <tr class="separator:aa0e52e5b9986d745f510a1d54a133771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the main header file. </p>
-<dl class="section author"><dt>Author</dt><dd>Joshua Saxby &lt;joshua.a.saxby+TNOPLuc8vM==.com </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Joshua Saxby <code>&lt;joshua.a.saxby+TNOPLuc8vM==@gmail.com&gt;</code> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2017</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) Joshua Saxby 2017</dd>
 <dd>
 The Copyright holder reserves all rights of this work.</dd>
 <dd>
-No copying or reproduction is permitted without the express, written consent of the Copyright holder. </dd></dl>
+No copying or reproduction is permitted without the express, written consent of the Copyright holder.</dd></dl>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a47fb1b4804c8822747ca6ba2863dcf1f"></a>
 <div class="memitem">
@@ -178,6 +176,7 @@ No copying or reproduction is permitted without the express, written consent of 
 
 <p>Used to store success/error information returned from a colrcv function. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>This is currently unused and simply typedef'ed to <code>void</code>, however it will be used in the future </dd></dl>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
@@ -192,7 +191,7 @@ No copying or reproduction is permitted without the express, written consent of 
 </div><div class="memdoc">
 
 <p>Used to represent a version of colrcv. </p>
-<p>Versions are of the format &lt;MAJOR.MINOR.patch&gt; </p>
+<p>Versions are of the format &lt;MAJOR.MINOR.patch&gt; </p><dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
@@ -223,6 +222,7 @@ No copying or reproduction is permitted without the express, written consent of 
 
 <p>Get the largest of two given values. </p>
 <dl class="section return"><dt>Returns</dt><dd>The largest value </dd></dl>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
@@ -252,6 +252,7 @@ No copying or reproduction is permitted without the express, written consent of 
 
 <p>Get the smallest of two given values. </p>
 <dl class="section return"><dt>Returns</dt><dd>The smallest value </dd></dl>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
@@ -289,6 +290,23 @@ No copying or reproduction is permitted without the express, written consent of 
 <p>Checks that the condition <code>min &lt;= val &lt;= max</code> is true </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> if the condition is satisfied </dd>
 <dd>
 <code>false</code> if the condition is not satisfied </dd></dl>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="aa0e52e5b9986d745f510a1d54a133771"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structcolrcv__version__t.html">colrcv_version_t</a> COLRCV_VERSION</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stores the current version of colrcv. </p>
+<dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>

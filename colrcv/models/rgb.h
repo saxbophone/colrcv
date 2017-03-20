@@ -9,7 +9,7 @@
  * @brief This header file defines the data types for representing colours in
  * the RGB model, and functions for manipulating it.
  *
- * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
+ * @author Joshua Saxby `<joshua.a.saxby+TNOPLuc8vM==@gmail.com>`
  * @date 2017
  *
  * @copyright Copyright (C) Joshua Saxby 2017
@@ -20,6 +20,8 @@
  * @copyright
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
+ *
+ * @since `v0.1.0`
  */
 #ifndef SAXBOPHONE_COLRCV_MODELS_RGB_H
 #define SAXBOPHONE_COLRCV_MODELS_RGB_H
@@ -38,6 +40,7 @@ extern "C"{
  * @brief Used to represent an RGB colour
  * @details This is the ubquitous RGB Red/Green/Blue) video display colour
  * model
+ * @since `v0.1.0`
  */
 struct colrcv_rgb_t {
     /** @brief The red component. Should be in range 0 -> 255 */
@@ -48,16 +51,23 @@ struct colrcv_rgb_t {
     double b;
 };
 
-/** @details The minimum value that any of the components should have */
+/**
+ * @details The minimum value that any of the components should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_RGB_MIN_VALUE;
 
-/** @details The maximum value that any of the components should have */
+/**
+ * @details The maximum value that any of the components should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_RGB_MAX_VALUE;
 
 /**
  * @brief Checks that red component of a given `colrcv_rgb_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_rgb_r_is_valid(colrcv_rgb_t rgb);
 
@@ -65,6 +75,7 @@ bool colrcv_rgb_r_is_valid(colrcv_rgb_t rgb);
  * @brief Checks that green component of a given `colrcv_rgb_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_rgb_g_is_valid(colrcv_rgb_t rgb);
 
@@ -72,6 +83,7 @@ bool colrcv_rgb_g_is_valid(colrcv_rgb_t rgb);
  * @brief Checks that blue component of a given `colrcv_rgb_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_rgb_b_is_valid(colrcv_rgb_t rgb);
 
@@ -79,6 +91,7 @@ bool colrcv_rgb_b_is_valid(colrcv_rgb_t rgb);
  * @brief Checks that the components of a given `colrcv_rgb_t` struct are valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_rgb_is_valid(colrcv_rgb_t rgb);
 
@@ -87,6 +100,7 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb);
  * @param rgb An RGB colour to be converted
  * @param[out] hsv The HSV colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv);
 
@@ -95,6 +109,7 @@ colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv);
  * @param rgb An RGB colour to be converted
  * @param[out] hsl The HSL colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl);
 
@@ -103,6 +118,7 @@ colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl);
  * @param rgb An RGB colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_rgb_to_lab(colrcv_rgb_t rgb, colrcv_lab_t* lab);
 
@@ -111,6 +127,7 @@ colrcv_result_t colrcv_rgb_to_lab(colrcv_rgb_t rgb, colrcv_lab_t* lab);
  * @param rgb An RGB colour to be converted
  * @param[out] xyz The XYZ colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb, colrcv_xyz_t* xyz);
 

@@ -13,7 +13,7 @@
  * does not reap any benefits. Use the colour-model specific header files to get
  * the respective colour models types and functions declared within them.
  *
- * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
+ * @author Joshua Saxby `<joshua.a.saxby+TNOPLuc8vM==@gmail.com>`
  * @date 2017
  *
  * @copyright Copyright (C) Joshua Saxby 2017
@@ -24,6 +24,8 @@
  * @copyright
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
+ *
+ * @since `v0.1.0`
  */
 #ifndef SAXBOPHONE_COLRCV_MODELS_TYPES_H
 #define SAXBOPHONE_COLRCV_MODELS_TYPES_H

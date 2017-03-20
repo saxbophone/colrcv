@@ -9,7 +9,7 @@
  * @brief This header file defines the data types for representing colours in
  * the XYZ model, and functions for manipulating it.
  *
- * @author Joshua Saxby <joshua.a.saxby+TNOPLuc8vM==@gmail.com
+ * @author Joshua Saxby `<joshua.a.saxby+TNOPLuc8vM==@gmail.com>`
  * @date 2017
  *
  * @copyright Copyright (C) Joshua Saxby 2017
@@ -20,6 +20,8 @@
  * @copyright
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
+ *
+ * @since `v0.1.0`
  */
 #ifndef SAXBOPHONE_COLRCV_MODELS_XYZ_H
 #define SAXBOPHONE_COLRCV_MODELS_XYZ_H
@@ -38,6 +40,7 @@ extern "C"{
  * @brief Used to represent an XYZ colour
  * @details This is the CIE-XYZ colour model. For now, this is assumed to be
  * based on an Observer of 2 degrees and an Illuminant of D65.
+ * @since `v0.1.0`
  */
 struct colrcv_xyz_t {
     /** @brief The x component. Should be in range 0 -> 112 */
@@ -48,27 +51,49 @@ struct colrcv_xyz_t {
     double z;
 };
 
-/** @details The minimum value that any of the components should have */
+/**
+ * @details The minimum value that any of the components should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_MIN_VALUE;
 
-/** @details The maximum value that the x component should have */
+/**
+ * @details The maximum value that the x component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_X_MAX_VALUE;
-/** @details The maximum value that the y component should have */
+/**
+ * @details The maximum value that the y component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_Y_MAX_VALUE;
-/** @details The maximum value that the z component should have */
+/**
+ * @details The maximum value that the z component should have
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_Z_MAX_VALUE;
 
-/** @details Reference X value for an Observer of 2° and an Illuminant of D65 */
+/**
+ * @details Reference X value for an Observer of 2° and an Illuminant of D65
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_X_REF_VALUE;
-/** @details Reference Y value for an Observer of 2° and an Illuminant of D65 */
+/**
+ * @details Reference Y value for an Observer of 2° and an Illuminant of D65
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_Y_REF_VALUE;
-/** @details Reference Z value for an Observer of 2° and an Illuminant of D65 */
+/**
+ * @details Reference Z value for an Observer of 2° and an Illuminant of D65
+ * @since `v0.1.0`
+ */
 extern const double COLRCV_XYZ_Z_REF_VALUE;
 
 /**
  * @brief Checks that x component of a given `colrcv_xyz_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_xyz_x_is_valid(colrcv_xyz_t xyz);
 
@@ -77,6 +102,7 @@ bool colrcv_xyz_x_is_valid(colrcv_xyz_t xyz);
  * valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_xyz_y_is_valid(colrcv_xyz_t xyz);
 
@@ -84,6 +110,7 @@ bool colrcv_xyz_y_is_valid(colrcv_xyz_t xyz);
  * @brief Checks that z component of a given `colrcv_xyz_t` struct is valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_xyz_z_is_valid(colrcv_xyz_t xyz);
 
@@ -91,6 +118,7 @@ bool colrcv_xyz_z_is_valid(colrcv_xyz_t xyz);
  * @brief Checks that the components of a given `colrcv_xyz_t` struct are valid
  * @returns `true` if it is valid
  * @returns `false` if it is not valid
+ * @since `v0.1.0`
  */
 bool colrcv_xyz_is_valid(colrcv_xyz_t xyz);
 
@@ -99,6 +127,7 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz);
  * @param xyz An XYZ colour to be converted
  * @param[out] rgb The RGB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb);
 
@@ -107,6 +136,7 @@ colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb);
  * @param xyz An XYZ colour to be converted
  * @param[out] hsv The HSV colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.2.0`
  */
 colrcv_result_t colrcv_xyz_to_hsv(colrcv_xyz_t xyz, colrcv_hsv_t* hsv);
 
@@ -115,6 +145,7 @@ colrcv_result_t colrcv_xyz_to_hsv(colrcv_xyz_t xyz, colrcv_hsv_t* hsv);
  * @param xyz An XYZ colour to be converted
  * @param[out] hsl The HSL colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.2.0`
  */
 colrcv_result_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz, colrcv_hsl_t* hsl);
 
@@ -123,6 +154,7 @@ colrcv_result_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz, colrcv_hsl_t* hsl);
  * @param xyz An XYZ colour to be converted
  * @param[out] lab The LAB colour to store the result in
  * @returns Error/success information in a `colrcv_result_t` struct
+ * @since `v0.1.0`
  */
 colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab);
 
