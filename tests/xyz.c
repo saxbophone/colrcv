@@ -21,6 +21,8 @@
 
 #include "../colrcv/models/xyz.h"
 #include "../colrcv/models/rgb.h"
+#include "../colrcv/models/hsv.h"
+#include "../colrcv/models/hsl.h"
 #include "../colrcv/models/lab.h"
 
 
@@ -245,6 +247,136 @@ static colrcv_test_result_t test_colrcv_xyz_to_rgb(void) {
 
 /*
  * An internal struct type used only in this test for storing pairs of input
+ * XYZ and output HSV colours
+ */
+struct xyz_to_hsv_pair_t {
+    colrcv_xyz_t input;
+    colrcv_hsv_t output;
+};
+
+/*
+ * Test the function colrcv_xyz_to_hsv
+ * Function should return a correctly calculated HSV colour for the given XYZ
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_xyz_to_hsv(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct xyz_to_hsv_pair_t colours[4] = {
+        {
+            .input = { .x = 100, .y = 100, .z = 100, },
+            .output = { .h = 26.502, .s = 4.125, .v = 100, },
+        },
+        {
+            .input = { .x = 45, .y = 26, .z = 3, },
+            .output = { .h = 13.066, .s = 95.226, .v = 100, },
+        },
+        {
+            .input = { .x = 47, .y = 52, .z = 83, },
+            .output = { .h = 205.895, .s = 34.529, .v = 90.503, },
+        },
+        {
+            .input = { .x = 13, .y = 19, .z = 0, },
+            .output = { .h = 74.219, .s = 100, .v = 51.734, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(uint8_t i = 0; i < 4; i++) {
+        colrcv_hsv_t result;
+        colrcv_xyz_to_hsv(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.h, colours[i].output.h) &&
+            almost_equal(result.s, colours[i].output.s) &&
+            almost_equal(result.v, colours[i].output.v)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.h, colours[i].output.s, colours[i].output.v,
+                result.h, result.s, result.v
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
+/*
+ * An internal struct type used only in this test for storing pairs of input
+ * XYZ and output HSL colours
+ */
+struct xyz_to_hsl_pair_t {
+    colrcv_xyz_t input;
+    colrcv_hsl_t output;
+};
+
+/*
+ * Test the function colrcv_xyz_to_hsl
+ * Function should return a correctly calculated HSL colour for the given XYZ
+ * colour
+ */
+static colrcv_test_result_t test_colrcv_xyz_to_hsl(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+    // setup test data - we want 4 sample colours to test
+    struct xyz_to_hsl_pair_t colours[4] = {
+        {
+            .input = { .x = 100, .y = 100, .z = 100, },
+            .output = { .h = 26.502, .s = 100, .l = 97.937, },
+        },
+        {
+            .input = { .x = 45, .y = 26, .z = 3, },
+            .output = { .h = 13.066, .s = 100, .l = 52.386, },
+        },
+        {
+            .input = { .x = 47, .y = 52, .z = 83, },
+            .output = { .h = 205.895, .s = 62.197, .l = 74.878, },
+        },
+        {
+            .input = { .x = 13, .y = 19, .z = 0, },
+            .output = { .h = 74.219, .s = 100, .l = 25.867, },
+        },
+    };
+    // flag to keep track of result
+    bool success = true;
+
+    // convert each colour and compare with output
+    for(uint8_t i = 0; i < 4; i++) {
+        colrcv_hsl_t result;
+        colrcv_xyz_to_hsl(colours[i].input, &result);
+        bool conversion_ok = (
+            almost_equal(result.h, colours[i].output.h) &&
+            almost_equal(result.s, colours[i].output.s) &&
+            almost_equal(result.l, colours[i].output.l)
+        );
+        // print out result and expected output if not equal
+        if(!conversion_ok) {
+            printf(
+                "Colour #%" PRIu8 ":\nExpected:\t(%f, %f, %f)\nGot:\t\t(%f, %f, %f)\n",
+                i,
+                colours[i].output.h, colours[i].output.s, colours[i].output.l,
+                result.h, result.s, result.l
+            );
+        }
+        // OR to success flag
+        success = success && conversion_ok;
+    }
+
+    test.result = success ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+    return test;
+}
+
+/*
+ * An internal struct type used only in this test for storing pairs of input
  * XYZ and output LAB colours
  */
 struct xyz_to_lab_pair_t {
@@ -321,6 +453,8 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_xyz_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_xyz_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_xyz_to_rgb, &suite);
+    colrcv_add_test_case(test_colrcv_xyz_to_hsv, &suite);
+    colrcv_add_test_case(test_colrcv_xyz_to_hsl, &suite);
     colrcv_add_test_case(test_colrcv_xyz_to_lab, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
