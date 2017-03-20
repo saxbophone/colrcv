@@ -341,9 +341,13 @@ static colrcv_test_result_t test_colrcv_rgb_to_lab(void) {
             .input = { .r = 33, .g = 33, .b = 33, },
             .output = { .l = 12.740, .a = 0.001, .b = -0.003, },
         },
+        /*
+         * pure RGB blue is slightly erroneous in LAB, as the *b component is
+         * technically 'out of range'
+         */
         {
-            .input = { .r = 127, .g = 63, .b = 255, },
-            .output = { .l = 46.025, .a = 67.625, .b = -84.874, },
+            .input = { .r = 0, .g = 0, .b = 255, },
+            .output = { .l = 32.302, .a = 79.196, .b = -107.863, },
         },
     };
     // flag to keep track of result
