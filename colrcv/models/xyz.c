@@ -97,6 +97,24 @@ colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
     clamp_rgb(rgb);
 }
 
+// Two-step conversion using XYZ->RGB and RGB->HSV
+colrcv_result_t colrcv_xyz_to_hsv(colrcv_xyz_t xyz, colrcv_hsv_t* hsv) {
+    // convert to RGB
+    colrcv_rgb_t rgb;
+    colrcv_xyz_to_rgb(xyz, &rgb);
+    // convert to HSV
+    colrcv_rgb_to_hsv(rgb, hsv);
+}
+
+// Two-step conversion using XYZ->RGB and RGB->HSL
+colrcv_result_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz, colrcv_hsl_t* hsl) {
+    // convert to RGB
+    colrcv_rgb_t rgb;
+    colrcv_xyz_to_rgb(xyz, &rgb);
+    // convert to HSL
+    colrcv_rgb_to_hsl(rgb, hsl);
+}
+
 // private helper function for colrcv_xyz_to_lab
 static double convert_xyz_for_lab(double c) {
     // converted component needs the cube root of input if over a given size

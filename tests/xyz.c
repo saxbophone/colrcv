@@ -266,19 +266,19 @@ static colrcv_test_result_t test_colrcv_xyz_to_hsv(void) {
     struct xyz_to_hsv_pair_t colours[4] = {
         {
             .input = { .x = 100, .y = 100, .z = 100, },
-            .output = { .h = 26.5, .s = 4.13, .v = 100, },
+            .output = { .h = 26.502, .s = 4.125, .v = 100, },
         },
         {
             .input = { .x = 45, .y = 26, .z = 3, },
-            .output = { .h = 13.07, .s = 95.23, .v = 100, },
+            .output = { .h = 13.066, .s = 95.226, .v = 100, },
         },
         {
             .input = { .x = 47, .y = 52, .z = 83, },
-            .output = { .h = 205.9, .s = 34.53, .v = 90.5, },
+            .output = { .h = 205.895, .s = 34.529, .v = 90.503, },
         },
         {
             .input = { .x = 13, .y = 19, .z = 0, },
-            .output = { .h = 74.22, .s = 100, .v = 51.73, },
+            .output = { .h = 74.219, .s = 100, .v = 51.734, },
         },
     };
     // flag to keep track of result
@@ -331,19 +331,19 @@ static colrcv_test_result_t test_colrcv_xyz_to_hsl(void) {
     struct xyz_to_hsl_pair_t colours[4] = {
         {
             .input = { .x = 100, .y = 100, .z = 100, },
-            .output = { .h = 26.5, .s = 100, .l = 97.94, },
+            .output = { .h = 26.502, .s = 100, .l = 97.937, },
         },
         {
             .input = { .x = 45, .y = 26, .z = 3, },
-            .output = { .h = 13.07, .s = 100, .l = 52.39, },
+            .output = { .h = 13.066, .s = 100, .l = 52.386, },
         },
         {
             .input = { .x = 47, .y = 52, .z = 83, },
-            .output = { .h = 205.9, .s = 62.2, .l = 74.88, },
+            .output = { .h = 205.895, .s = 62.197, .l = 74.878, },
         },
         {
             .input = { .x = 13, .y = 19, .z = 0, },
-            .output = { .h = 74.22, .s = 100, .l = 25.87, },
+            .output = { .h = 74.219, .s = 100, .l = 25.867, },
         },
     };
     // flag to keep track of result
@@ -453,6 +453,8 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_xyz_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_xyz_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_xyz_to_rgb, &suite);
+    colrcv_add_test_case(test_colrcv_xyz_to_hsv, &suite);
+    colrcv_add_test_case(test_colrcv_xyz_to_hsl, &suite);
     colrcv_add_test_case(test_colrcv_xyz_to_lab, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
