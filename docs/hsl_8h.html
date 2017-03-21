@@ -98,15 +98,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This header file defines the data types for representing colours in the HSL model, and functions for manipulating it.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="colrcv_8h_source.html">../colrcv.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for hsl.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="hsl_8h__incl.png" border="0" usemap="#colrcv_2models_2hsl_8h" alt=""/></div>
 <map name="colrcv_2models_2hsl_8h" id="colrcv_2models_2hsl_8h">
-<area shape="rect" id="node3" href="colrcv_8h.html" title="This is the main header file. " alt="" coords="80,80,160,107"/>
-<area shape="rect" id="node5" href="types_8h.html" title="This header file forward&#45;declares (via typedef) all the data types used to represent colours in diffe..." alt="" coords="185,80,250,107"/>
+<area shape="rect" id="node3" href="types_8h.html" title="This header file forward&#45;declares (via typedef) all the data types used to represent colours in diffe..." alt="" coords="105,80,170,107"/>
 </map>
 </div>
 </div>
@@ -132,18 +130,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a46ee510639808a294efaca22199bcd4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#a46ee510639808a294efaca22199bcd4b">colrcv_hsl_is_valid</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl)</td></tr>
 <tr class="memdesc:a46ee510639808a294efaca22199bcd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the components of a given <code><a class="el" href="structcolrcv__hsl__t.html" title="Used to represent a HSL colour. ">colrcv_hsl_t</a></code> struct are valid.  <a href="#a46ee510639808a294efaca22199bcd4b">More...</a><br /></td></tr>
 <tr class="separator:a46ee510639808a294efaca22199bcd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afae693e3e27a60487aabbebbee047f5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#afae693e3e27a60487aabbebbee047f5d">colrcv_hsl_to_rgb</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl, <a class="el" href="structcolrcv__rgb__t.html">colrcv_rgb_t</a> *rgb)</td></tr>
-<tr class="memdesc:afae693e3e27a60487aabbebbee047f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to an RGB colour.  <a href="#afae693e3e27a60487aabbebbee047f5d">More...</a><br /></td></tr>
-<tr class="separator:afae693e3e27a60487aabbebbee047f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0f591444aa54ccdfdecd1fba6a936c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#ac0f591444aa54ccdfdecd1fba6a936c0">colrcv_hsl_to_hsv</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl, <a class="el" href="structcolrcv__hsv__t.html">colrcv_hsv_t</a> *hsv)</td></tr>
-<tr class="memdesc:ac0f591444aa54ccdfdecd1fba6a936c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to a HSV colour.  <a href="#ac0f591444aa54ccdfdecd1fba6a936c0">More...</a><br /></td></tr>
-<tr class="separator:ac0f591444aa54ccdfdecd1fba6a936c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4a2bc4fa1552446357ce92dee7dae36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#ae4a2bc4fa1552446357ce92dee7dae36">colrcv_hsl_to_lab</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl, <a class="el" href="structcolrcv__lab__t.html">colrcv_lab_t</a> *lab)</td></tr>
-<tr class="memdesc:ae4a2bc4fa1552446357ce92dee7dae36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to a LAB colour.  <a href="#ae4a2bc4fa1552446357ce92dee7dae36">More...</a><br /></td></tr>
-<tr class="separator:ae4a2bc4fa1552446357ce92dee7dae36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a3e8e6b91663316869c08a996ee034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#ac2a3e8e6b91663316869c08a996ee034">colrcv_hsl_to_xyz</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl, <a class="el" href="structcolrcv__xyz__t.html">colrcv_xyz_t</a> *xyz)</td></tr>
-<tr class="memdesc:ac2a3e8e6b91663316869c08a996ee034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to an XYZ colour.  <a href="#ac2a3e8e6b91663316869c08a996ee034">More...</a><br /></td></tr>
-<tr class="separator:ac2a3e8e6b91663316869c08a996ee034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb160d23a4dc58d75066adcc0c9fa680"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolrcv__rgb__t.html">colrcv_rgb_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#aeb160d23a4dc58d75066adcc0c9fa680">colrcv_hsl_to_rgb</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl)</td></tr>
+<tr class="memdesc:aeb160d23a4dc58d75066adcc0c9fa680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to an RGB colour.  <a href="#aeb160d23a4dc58d75066adcc0c9fa680">More...</a><br /></td></tr>
+<tr class="separator:aeb160d23a4dc58d75066adcc0c9fa680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff376002e5c8a04aa9a7da7ce2f77f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolrcv__hsv__t.html">colrcv_hsv_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#aff376002e5c8a04aa9a7da7ce2f77f26">colrcv_hsl_to_hsv</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl)</td></tr>
+<tr class="memdesc:aff376002e5c8a04aa9a7da7ce2f77f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to a HSV colour.  <a href="#aff376002e5c8a04aa9a7da7ce2f77f26">More...</a><br /></td></tr>
+<tr class="separator:aff376002e5c8a04aa9a7da7ce2f77f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3157169f76c100af69473c570cd14ff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolrcv__lab__t.html">colrcv_lab_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#a3157169f76c100af69473c570cd14ff5">colrcv_hsl_to_lab</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl)</td></tr>
+<tr class="memdesc:a3157169f76c100af69473c570cd14ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to a LAB colour.  <a href="#a3157169f76c100af69473c570cd14ff5">More...</a><br /></td></tr>
+<tr class="separator:a3157169f76c100af69473c570cd14ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5bd0c017458b45bd2748593eeb77e70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolrcv__xyz__t.html">colrcv_xyz_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hsl_8h.html#af5bd0c017458b45bd2748593eeb77e70">colrcv_hsl_to_xyz</a> (<a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a> hsl)</td></tr>
+<tr class="memdesc:af5bd0c017458b45bd2748593eeb77e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a HSL colour to an XYZ colour.  <a href="#af5bd0c017458b45bd2748593eeb77e70">More...</a><br /></td></tr>
+<tr class="separator:af5bd0c017458b45bd2748593eeb77e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -255,26 +253,16 @@ No copying or reproduction is permitted without the express, written consent of 
 
 </div>
 </div>
-<a class="anchor" id="ac0f591444aa54ccdfdecd1fba6a936c0"></a>
+<a class="anchor" id="aff376002e5c8a04aa9a7da7ce2f77f26"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a> colrcv_hsl_to_hsv </td>
+          <td class="memname"><a class="el" href="structcolrcv__hsv__t.html">colrcv_hsv_t</a> colrcv_hsl_to_hsv </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a>&#160;</td>
-          <td class="paramname"><em>hsl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>hsl</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcolrcv__hsv__t.html">colrcv_hsv_t</a> *&#160;</td>
-          <td class="paramname"><em>hsv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -282,36 +270,25 @@ No copying or reproduction is permitted without the express, written consent of 
 <p>Converts a HSL colour to a HSV colour. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">hsv</td><td>The HSV colour to store the result in </td></tr>
+    <tr><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error/success information in a <code>colrcv_result_t</code> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The HSV colour that the HSL colour was converted to </dd></dl>
 <dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ae4a2bc4fa1552446357ce92dee7dae36"></a>
+<a class="anchor" id="a3157169f76c100af69473c570cd14ff5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a> colrcv_hsl_to_lab </td>
+          <td class="memname"><a class="el" href="structcolrcv__lab__t.html">colrcv_lab_t</a> colrcv_hsl_to_lab </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a>&#160;</td>
-          <td class="paramname"><em>hsl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>hsl</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcolrcv__lab__t.html">colrcv_lab_t</a> *&#160;</td>
-          <td class="paramname"><em>lab</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -319,36 +296,25 @@ No copying or reproduction is permitted without the express, written consent of 
 <p>Converts a HSL colour to a LAB colour. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lab</td><td>The LAB colour to store the result in </td></tr>
+    <tr><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error/success information in a <code>colrcv_result_t</code> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The LAB colour that the HSL colour was converted to </dd></dl>
 <dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="afae693e3e27a60487aabbebbee047f5d"></a>
+<a class="anchor" id="aeb160d23a4dc58d75066adcc0c9fa680"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a> colrcv_hsl_to_rgb </td>
+          <td class="memname"><a class="el" href="structcolrcv__rgb__t.html">colrcv_rgb_t</a> colrcv_hsl_to_rgb </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a>&#160;</td>
-          <td class="paramname"><em>hsl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>hsl</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcolrcv__rgb__t.html">colrcv_rgb_t</a> *&#160;</td>
-          <td class="paramname"><em>rgb</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -356,36 +322,25 @@ No copying or reproduction is permitted without the express, written consent of 
 <p>Converts a HSL colour to an RGB colour. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">rgb</td><td>The RGB colour to store the result in </td></tr>
+    <tr><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error/success information in a <code>colrcv_result_t</code> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The RGB colour that the HSL colour was converted to </dd></dl>
 <dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ac2a3e8e6b91663316869c08a996ee034"></a>
+<a class="anchor" id="af5bd0c017458b45bd2748593eeb77e70"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="colrcv_8h.html#a47fb1b4804c8822747ca6ba2863dcf1f">colrcv_result_t</a> colrcv_hsl_to_xyz </td>
+          <td class="memname"><a class="el" href="structcolrcv__xyz__t.html">colrcv_xyz_t</a> colrcv_hsl_to_xyz </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcolrcv__hsl__t.html">colrcv_hsl_t</a>&#160;</td>
-          <td class="paramname"><em>hsl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>hsl</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcolrcv__xyz__t.html">colrcv_xyz_t</a> *&#160;</td>
-          <td class="paramname"><em>xyz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -393,12 +348,11 @@ No copying or reproduction is permitted without the express, written consent of 
 <p>Converts a HSL colour to an XYZ colour. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">xyz</td><td>The XYZ colour to store the result in </td></tr>
+    <tr><td class="paramname">hsl</td><td>A HSL colour to be converted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error/success information in a <code>colrcv_result_t</code> struct </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The XYZ colour that the HSL colour was converted to </dd></dl>
 <dl class="section since"><dt>Since</dt><dd><code>v0.1.0</code> </dd></dl>
 
 </div>
