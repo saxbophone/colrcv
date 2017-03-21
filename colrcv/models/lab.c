@@ -57,31 +57,19 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
     );
 }
 
-// Two-step conversion using LAB->XYZ and XYZ->RGB
-colrcv_result_t colrcv_lab_to_rgb(colrcv_lab_t lab, colrcv_rgb_t* rgb) {
-    // convert to XYZ first
-    colrcv_xyz_t xyz;
-    colrcv_lab_to_xyz(lab, &xyz);
-    // now convert to RGB
-    colrcv_xyz_to_rgb(xyz, rgb);
+colrcv_rgb_t colrcv_lab_to_rgb(colrcv_lab_t lab) {
+    // Two-step conversion using LAB->XYZ and XYZ->RGB
+    return colrcv_xyz_to_rgb(colrcv_lab_to_xyz(lab));
 }
 
-// Two-step conversion using LAB->RGB and RGB->HSV
-colrcv_result_t colrcv_lab_to_hsv(colrcv_lab_t lab, colrcv_hsv_t* hsv) {
-    // convert to RGB first
-    colrcv_rgb_t rgb;
-    colrcv_lab_to_rgb(lab, &rgb);
-    // now convert to HSV
-    colrcv_rgb_to_hsv(rgb, hsv);
+colrcv_hsv_t colrcv_lab_to_hsv(colrcv_lab_t lab) {
+    // Two-step conversion using LAB->RGB and RGB->HSV
+    return colrcv_rgb_to_hsv(colrcv_lab_to_rgb(lab));
 }
 
-// Two-step conversion using LAB->RGB and RGB->HSL
-colrcv_result_t colrcv_lab_to_hsl(colrcv_lab_t lab, colrcv_hsl_t* hsl) {
-    // convert to RGB first
-    colrcv_rgb_t rgb;
-    colrcv_lab_to_rgb(lab, &rgb);
-    // now convert to HSL
-    colrcv_rgb_to_hsl(rgb, hsl);
+colrcv_hsl_t colrcv_lab_to_hsl(colrcv_lab_t lab) {
+    // Two-step conversion using LAB->RGB and RGB->HSL
+    return colrcv_rgb_to_hsl(colrcv_lab_to_rgb(lab));
 }
 
 // private helper function for colrcv_lab_to_xyz
@@ -93,15 +81,17 @@ static double convert_lab_for_xyz(double c) {
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=08#text8
-colrcv_result_t colrcv_lab_to_xyz(colrcv_lab_t lab, colrcv_xyz_t* xyz) {
+colrcv_xyz_t colrcv_lab_to_xyz(colrcv_lab_t lab) {
+    colrcv_xyz_t xyz;
     // skew input values
     const double y = (lab.l + 16.0) / 116.0;
     const double x = lab.a / 500.0 + y;
     const double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
-    xyz->x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x);
-    xyz->y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y);
-    xyz->z = COLRCV_XYZ_Z_REF_VALUE * convert_lab_for_xyz(z);
+    xyz.x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x);
+    xyz.y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y);
+    xyz.z = COLRCV_XYZ_Z_REF_VALUE * convert_lab_for_xyz(z);
+    return xyz;
 }
 
 #ifdef __cplusplus

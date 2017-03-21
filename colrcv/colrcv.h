@@ -56,15 +56,6 @@ typedef struct colrcv_version_t {
 extern const colrcv_version_t COLRCV_VERSION;
 
 /**
- * @brief Used to store success/error information returned from a colrcv
- * function
- * @remark This is currently unused and simply typedef'ed to `void`, however it
- * will be used in the future
- * @since `v0.1.0`
- */
-typedef void colrcv_result_t;
-
-/**
  * @brief A utility function for checking that a given value is in a given range
  * @details Checks that the condition `min <= val <= max` is true
  * @returns `true` if the condition is satisfied

@@ -15,6 +15,9 @@
 #include "../colrcv.h"
 #include "hsl.h"
 #include "rgb.h"
+#include "hsv.h"
+#include "lab.h"
+#include "xyz.h"
 
 
 #ifdef __cplusplus
@@ -72,12 +75,13 @@ static double hue_to_rgb(double a, double b, double h) {
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=19#text19
-colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb) {
+colrcv_rgb_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl) {
+    colrcv_rgb_t rgb;
     // if saturation is 0, it's an achromatic grey so return early
     if(hsl.s == 0) {
-        rgb->r = hsl.l / 100 * 255;
-        rgb->g = hsl.l / 100 * 255;
-        rgb->b = hsl.l / 100 * 255;
+        rgb.r = hsl.l / 100 * 255;
+        rgb.g = hsl.l / 100 * 255;
+        rgb.b = hsl.l / 100 * 255;
     } else {
         // down-scale all channels
         const double h = hsl.h / 360;
@@ -88,37 +92,26 @@ colrcv_result_t colrcv_hsl_to_rgb(colrcv_hsl_t hsl, colrcv_rgb_t* rgb) {
         // get temporary 'a'
         const double temp_a = 2 * l - temp_b;
         // get component amounts with respect to hue and temporaries
-        rgb->r = 255 * hue_to_rgb(temp_a, temp_b, h + (1.0 / 3));
-        rgb->g = 255 * hue_to_rgb(temp_a, temp_b, h);
-        rgb->b = 255 * hue_to_rgb(temp_a, temp_b, h - (1.0 / 3));
+        rgb.r = 255 * hue_to_rgb(temp_a, temp_b, h + (1.0 / 3));
+        rgb.g = 255 * hue_to_rgb(temp_a, temp_b, h);
+        rgb.b = 255 * hue_to_rgb(temp_a, temp_b, h - (1.0 / 3));
     }
+    return rgb;
 }
 
-// Two-step conversion using HSL->RGB and RGB->HSV
-colrcv_result_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl, colrcv_hsv_t* hsv) {
-    // convert to RGB
-    colrcv_rgb_t rgb;
-    colrcv_hsl_to_rgb(hsl, &rgb);
-    // convert to HSV
-    colrcv_rgb_to_hsv(rgb, hsv);
+colrcv_hsv_t colrcv_hsl_to_hsv(colrcv_hsl_t hsl) {
+    // Two-step conversion using HSL->RGB and RGB->HSV
+    return colrcv_rgb_to_hsv(colrcv_hsl_to_rgb(hsl));
 }
 
-// Two-step conversion using HSL->RGB and RGB->LAB
-colrcv_result_t colrcv_hsl_to_lab(colrcv_hsl_t hsl, colrcv_lab_t* lab) {
-    // convert to RGB
-    colrcv_rgb_t rgb;
-    colrcv_hsl_to_rgb(hsl, &rgb);
-    // convert to LAB
-    colrcv_rgb_to_lab(rgb, lab);
+colrcv_lab_t colrcv_hsl_to_lab(colrcv_hsl_t hsl) {
+    // Two-step conversion using HSL->RGB and RGB->LAB
+    return colrcv_rgb_to_lab(colrcv_hsl_to_rgb(hsl));
 }
 
-// Two-step conversion using HSL->RGB and RGB->XYZ
-colrcv_result_t colrcv_hsl_to_xyz(colrcv_hsl_t hsl, colrcv_xyz_t* xyz) {
-    // convert to RGB
-    colrcv_rgb_t rgb;
-    colrcv_hsl_to_rgb(hsl, &rgb);
-    // convert to XYZ
-    colrcv_rgb_to_xyz(rgb, xyz);
+colrcv_xyz_t colrcv_hsl_to_xyz(colrcv_hsl_t hsl) {
+    // Two-step conversion using HSL->RGB and RGB->XYZ
+    return colrcv_rgb_to_xyz(colrcv_hsl_to_rgb(hsl));
 }
 
 #ifdef __cplusplus

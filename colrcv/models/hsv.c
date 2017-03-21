@@ -15,6 +15,9 @@
 #include "../colrcv.h"
 #include "hsv.h"
 #include "rgb.h"
+#include "hsl.h"
+#include "lab.h"
+#include "xyz.h"
 
 
 #ifdef __cplusplus
@@ -54,16 +57,16 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv) {
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=21#text21
-colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
+colrcv_rgb_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv) {
+    colrcv_rgb_t rgb;
     // down-scale s and v input values first
     const double s = hsv.s / 100;
     const double v = hsv.v / 100;
-    // if saturation is 0, then we can return early
+    // if saturation is 0 then all channels are a product of the value
     if(s == 0) {
-        rgb->r = v * 255;
-        rgb->g = v * 255;
-        rgb->b = v * 255;
-        return;
+        rgb.r = v * 255;
+        rgb.g = v * 255;
+        rgb.b = v * 255;
     } else {
         // scale down H to be in range 0 -> 6
         double scaled_h = hsv.h / 60;
@@ -80,68 +83,57 @@ colrcv_result_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv, colrcv_rgb_t* rgb) {
         // choose one of many different multiplexes based on value of integer_h
         switch(integer_h % 6) {
             case 0:
-                rgb->r = v;
-                rgb->g = temp_c;
-                rgb->b = temp_a;
+                rgb.r = v;
+                rgb.g = temp_c;
+                rgb.b = temp_a;
                 break;
             case 1:
-                rgb->r = temp_b;
-                rgb->g = v;
-                rgb->b = temp_a;
+                rgb.r = temp_b;
+                rgb.g = v;
+                rgb.b = temp_a;
                 break;
             case 2:
-                rgb->r = temp_a;
-                rgb->g = v;
-                rgb->b = temp_c;
+                rgb.r = temp_a;
+                rgb.g = v;
+                rgb.b = temp_c;
                 break;
             case 3:
-                rgb->r = temp_a;
-                rgb->g = temp_b;
-                rgb->b = v;
+                rgb.r = temp_a;
+                rgb.g = temp_b;
+                rgb.b = v;
                 break;
             case 4:
-                rgb->r = temp_c;
-                rgb->g = temp_a;
-                rgb->b = v;
+                rgb.r = temp_c;
+                rgb.g = temp_a;
+                rgb.b = v;
                 break;
             case 5:
-                rgb->r = v;
-                rgb->g = temp_a;
-                rgb->b = temp_b;
+                rgb.r = v;
+                rgb.g = temp_a;
+                rgb.b = temp_b;
                 break;
         }
         // up-scale output values to be in 0-255 range
-        rgb->r *= 255;
-        rgb->g *= 255;
-        rgb->b *= 255;
+        rgb.r *= 255;
+        rgb.g *= 255;
+        rgb.b *= 255;
     }
+    return rgb;
 }
 
-// Two-step conversion using HSV->RGB and RGB->HSL
-colrcv_result_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv, colrcv_hsl_t* hsl) {
-    // convert to RGB first
-    colrcv_rgb_t rgb;
-    colrcv_hsv_to_rgb(hsv, &rgb);
-    // now convert to HSL
-    colrcv_rgb_to_hsl(rgb, hsl);
+colrcv_hsl_t colrcv_hsv_to_hsl(colrcv_hsv_t hsv) {
+    // Two-step conversion using HSV->RGB and RGB->HSL
+    return colrcv_rgb_to_hsl(colrcv_hsv_to_rgb(hsv));
 }
 
-// Two-step conversion using HSV->RGB and RGB->LAB
-colrcv_result_t colrcv_hsv_to_lab(colrcv_hsv_t hsv, colrcv_lab_t* lab) {
-    // convert to rgb
-    colrcv_rgb_t rgb;
-    colrcv_hsv_to_rgb(hsv, &rgb);
-    // convert to LAB
-    colrcv_rgb_to_lab(rgb, lab);
+colrcv_lab_t colrcv_hsv_to_lab(colrcv_hsv_t hsv) {
+    // Two-step conversion using HSV->RGB and RGB->LAB
+    return colrcv_rgb_to_lab(colrcv_hsv_to_rgb(hsv));
 }
 
-// Two-step conversion using HSV->RGB and RGB->XYZ
-colrcv_result_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv, colrcv_xyz_t* xyz) {
-    // convert to rgb
-    colrcv_rgb_t rgb;
-    colrcv_hsv_to_rgb(hsv, &rgb);
-    // convert to XYZ
-    colrcv_rgb_to_xyz(rgb, xyz);
+colrcv_xyz_t colrcv_hsv_to_xyz(colrcv_hsv_t hsv) {
+    // Two-step conversion using HSV->RGB and RGB->XYZ
+    return colrcv_rgb_to_xyz(colrcv_hsv_to_rgb(hsv));
 }
 
 #ifdef __cplusplus

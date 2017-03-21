@@ -16,6 +16,8 @@
 #include "../colrcv.h"
 #include "xyz.h"
 #include "rgb.h"
+#include "hsv.h"
+#include "hsl.h"
 #include "lab.h"
 
 
@@ -80,7 +82,8 @@ static void clamp_rgb(colrcv_rgb_t* rgb) {
 /* END private helper functions for colrcv_xyz_to_rgb */
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=01#text1
-colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
+colrcv_rgb_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz) {
+    colrcv_rgb_t rgb;
     // shrink larger numbers downs
     const double x = xyz.x / 100.0;
     const double y = xyz.y / 100.0;
@@ -90,29 +93,22 @@ colrcv_result_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz, colrcv_rgb_t* rgb) {
     const double g = x * -0.9689 + y *  1.8758 + z *  0.0415;
     const double b = x *  0.0557 + y * -0.2040 + z *  1.0570;
     // convert components and upscale
-    rgb->r = convert_xyz_for_rgb(r) * 255.0;
-    rgb->g = convert_xyz_for_rgb(g) * 255.0;
-    rgb->b = convert_xyz_for_rgb(b) * 255.0;
+    rgb.r = convert_xyz_for_rgb(r) * 255.0;
+    rgb.g = convert_xyz_for_rgb(g) * 255.0;
+    rgb.b = convert_xyz_for_rgb(b) * 255.0;
     // clamp components
-    clamp_rgb(rgb);
+    clamp_rgb(&rgb);
+    return rgb;
 }
 
-// Two-step conversion using XYZ->RGB and RGB->HSV
-colrcv_result_t colrcv_xyz_to_hsv(colrcv_xyz_t xyz, colrcv_hsv_t* hsv) {
-    // convert to RGB
-    colrcv_rgb_t rgb;
-    colrcv_xyz_to_rgb(xyz, &rgb);
-    // convert to HSV
-    colrcv_rgb_to_hsv(rgb, hsv);
+colrcv_hsv_t colrcv_xyz_to_hsv(colrcv_xyz_t xyz) {
+    // Two-step conversion using XYZ->RGB and RGB->HSV
+    return colrcv_rgb_to_hsv(colrcv_xyz_to_rgb(xyz));
 }
 
-// Two-step conversion using XYZ->RGB and RGB->HSL
-colrcv_result_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz, colrcv_hsl_t* hsl) {
-    // convert to RGB
-    colrcv_rgb_t rgb;
-    colrcv_xyz_to_rgb(xyz, &rgb);
-    // convert to HSL
-    colrcv_rgb_to_hsl(rgb, hsl);
+colrcv_hsl_t colrcv_xyz_to_hsl(colrcv_xyz_t xyz) {
+    // Two-step conversion using XYZ->RGB and RGB->HSL
+    return colrcv_rgb_to_hsl(colrcv_xyz_to_rgb(xyz));
 }
 
 // private helper function for colrcv_xyz_to_lab
@@ -122,15 +118,17 @@ static double convert_xyz_for_lab(double c) {
 }
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=07#text7
-colrcv_result_t colrcv_xyz_to_lab(colrcv_xyz_t xyz, colrcv_lab_t* lab) {
+colrcv_lab_t colrcv_xyz_to_lab(colrcv_xyz_t xyz) {
+    colrcv_lab_t lab;
     // skew and convert input values
     const double x = convert_xyz_for_lab(xyz.x / COLRCV_XYZ_X_REF_VALUE);
     const double y = convert_xyz_for_lab(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
     const double z = convert_xyz_for_lab(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
     // convert to LAB ranges
-    lab->l = (116 * y) - 16;
-    lab->a = 500 * (x - y);
-    lab->b = 200 * (y - z);
+    lab.l = (116 * y) - 16;
+    lab.a = 500 * (x - y);
+    lab.b = 200 * (y - z);
+    return lab;
 }
 
 #ifdef __cplusplus

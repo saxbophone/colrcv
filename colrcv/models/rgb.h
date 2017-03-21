@@ -28,7 +28,6 @@
 
 #include <stdbool.h>
 
-#include "../colrcv.h"
 #include "types.h"
 
 
@@ -98,38 +97,34 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb);
 /**
  * @brief Converts an RGB colour to a HSV colour
  * @param rgb An RGB colour to be converted
- * @param[out] hsv The HSV colour to store the result in
- * @returns Error/success information in a `colrcv_result_t` struct
+ * @returns The HSV colour that the RGB colour was converted to
  * @since `v0.1.0`
  */
-colrcv_result_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb, colrcv_hsv_t* hsv);
+colrcv_hsv_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb);
 
 /**
  * @brief Converts an RGB colour to a HSL colour
  * @param rgb An RGB colour to be converted
- * @param[out] hsl The HSL colour to store the result in
- * @returns Error/success information in a `colrcv_result_t` struct
+ * @returns The HSL colour that the RGB colour was converted to
  * @since `v0.1.0`
  */
-colrcv_result_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb, colrcv_hsl_t* hsl);
+colrcv_hsl_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb);
 
 /**
  * @brief Converts an RGB colour to a LAB colour
  * @param rgb An RGB colour to be converted
- * @param[out] lab The LAB colour to store the result in
- * @returns Error/success information in a `colrcv_result_t` struct
+ * @returns The LAB colour that the RGB colour was converted to
  * @since `v0.1.0`
  */
-colrcv_result_t colrcv_rgb_to_lab(colrcv_rgb_t rgb, colrcv_lab_t* lab);
+colrcv_lab_t colrcv_rgb_to_lab(colrcv_rgb_t rgb);
 
 /**
  * @brief Converts an RGB colour to an XYZ colour
  * @param rgb An RGB colour to be converted
- * @param[out] xyz The XYZ colour to store the result in
- * @returns Error/success information in a `colrcv_result_t` struct
+ * @returns The XYZ colour that the RGB colour was converted to
  * @since `v0.1.0`
  */
-colrcv_result_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb, colrcv_xyz_t* xyz);
+colrcv_xyz_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb);
 
 #ifdef __cplusplus
 } // extern "C"
