@@ -1,6 +1,0 @@
-<map id="colrcv_hsl_is_valid" name="colrcv_hsl_is_valid">
-<area shape="rect" id="node2" href="$hsl_8h.html#ae6d056e6672db87f30d1ad4b1af845cf" title="Checks that hue component of a given colrcv_hsl_t struct is valid. " alt="" coords="185,5,332,32"/>
-<area shape="rect" id="node4" href="$hsl_8h.html#a57d38eee9f812266c237dab71227d305" title="Checks that saturation component of a given colrcv_hsl_t struct is valid. " alt="" coords="185,56,332,83"/>
-<area shape="rect" id="node5" href="$hsl_8h.html#a0f412cb5dfb6c69a897207f45cfd1289" title="Checks that value component of a given colrcv_hsl_t struct is valid. " alt="" coords="187,107,330,133"/>
-<area shape="rect" id="node3" href="$colrcv_8h.html#aef75c61699a7f00e2da3614698e619ef" title="A utility function for checking that a given value is in a given range. " alt="" coords="380,56,511,83"/>
-</map>
