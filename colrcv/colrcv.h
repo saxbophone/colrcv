@@ -85,6 +85,7 @@ double colrcv_max(double a, double b);
  * @param max The maximum value
  * @returns clamped version of `value`, guaranteed to be within the range
  * `min -> max`
+ * @since `v0.4.0`
  */
 double colrcv_clamp(double value, double min, double max);
 

@@ -95,6 +95,42 @@ bool colrcv_rgb_b_is_valid(colrcv_rgb_t rgb);
 bool colrcv_rgb_is_valid(colrcv_rgb_t rgb);
 
 /**
+ * @brief Makes all of the channels of a given `colrcv_rgb_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with all channels guaranteed to be within
+ * range.
+ * @since `v0.4.0`
+ */
+colrcv_rgb_t colrcv_rgb_clamp(colrcv_rgb_t rgb);
+
+/**
+ * @brief Makes the red channel of a given `colrcv_rgb_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the red channel guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_rgb_t colrcv_rgb_clamp_r(colrcv_rgb_t rgb);
+
+/**
+ * @brief Makes the green channel of a given `colrcv_rgb_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with the green channel guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_rgb_t colrcv_rgb_clamp_g(colrcv_rgb_t rgb);
+
+/**
+ * @brief Makes the blue channel of a given `colrcv_rgb_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with the blue channel guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_rgb_t colrcv_rgb_clamp_b(colrcv_rgb_t rgb);
+
+/**
  * @brief Converts an RGB colour to a HSV colour
  * @param rgb An RGB colour to be converted
  * @returns The HSV colour that the RGB colour was converted to
