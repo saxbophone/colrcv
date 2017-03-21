@@ -83,7 +83,8 @@ double colrcv_max(double a, double b);
  * @param value The value to clamp
  * @param min The minimum value
  * @param max The maximum value
- * @returns `value`, guaranteed to be within the range `min -> max`
+ * @returns clamped version of `value`, guaranteed to be within the range
+ * `min -> max`
  */
 double colrcv_clamp(double value, double min, double max);
 

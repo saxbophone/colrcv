@@ -146,7 +146,7 @@ static colrcv_test_status_t test_colrcv_clamp(
 ) {
     return (
         colrcv_clamp(value, min, max) == expected_value
-    ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_SUCCESS;
+    ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
 }
 
 /*

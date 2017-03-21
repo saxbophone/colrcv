@@ -32,11 +32,18 @@ bool colrcv_range_valid(double min, double val, double max) {
 }
 
 double colrcv_min(double a, double b) {
-    return (a < b) ? a : b;
+    return (a <= b) ? a : b;
 }
 
 double colrcv_max(double a, double b) {
-    return (a > b) ? a : b;
+    return (a >= b) ? a : b;
+}
+
+double colrcv_clamp(double value, double min, double max) {
+    // return value unmodified if it's in range, otherwise return clamped value
+    return (
+        colrcv_range_valid(min, value, max)
+    ) ? value : colrcv_min(max, colrcv_max(min, value));
 }
 
 #ifdef __cplusplus
