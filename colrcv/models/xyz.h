@@ -123,6 +123,42 @@ bool colrcv_xyz_z_is_valid(colrcv_xyz_t xyz);
 bool colrcv_xyz_is_valid(colrcv_xyz_t xyz);
 
 /**
+ * @brief Makes all of the channels of a given `colrcv_xyz_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with all channels guaranteed to be within
+ * range.
+ * @since `v0.4.0`
+ */
+colrcv_xyz_t colrcv_xyz_clamp(colrcv_xyz_t xyz);
+
+/**
+ * @brief Makes the x component of a given `colrcv_xyz_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the x component guaranteed to
+ * be within range.
+ * @since `v0.4.0`
+ */
+colrcv_xyz_t colrcv_xyz_clamp_x(colrcv_xyz_t xyz);
+
+/**
+ * @brief Makes the y component of a given `colrcv_xyz_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the y component guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_xyz_t colrcv_xyz_clamp_y(colrcv_xyz_t xyz);
+
+/**
+ * @brief Makes the z component of a given `colrcv_xyz_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the z component guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_xyz_t colrcv_xyz_clamp_z(colrcv_xyz_t xyz);
+
+/**
  * @brief Converts an XYZ colour to an RGB colour
  * @param xyz An XYZ colour to be converted
  * @returns The RGB colour that the XYZ colour was converted to
