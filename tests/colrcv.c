@@ -140,6 +140,57 @@ static colrcv_test_result_t test_colrcv_range_valid_max_exceeded(void) {
     return test;
 }
 
+// test case helper for functions testing colrcv_clamp
+static colrcv_test_status_t test_colrcv_clamp(
+    double value, double min, double max, double expected_value
+) {
+    return (
+        colrcv_clamp(value, min, max) == expected_value
+    ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_SUCCESS;
+}
+
+/*
+ * Test the function colrcv_clamp
+ * Functon should return the same value when the given value is within the given
+ * range
+ */
+static colrcv_test_result_t test_colrcv_clamp_within_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    test.result = test_colrcv_clamp(19.7, -246.7, 1339.1, 19.7);
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_clamp
+ * Functon should return the minimum value when the given value is smaller than
+ * the minimum value of the range
+ */
+static colrcv_test_result_t test_colrcv_clamp_less_than_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    test.result = test_colrcv_clamp(-3000, 0.0, 10.0, 0.0);
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_clamp
+ * Functon should return the maximum value when the given value is greater than
+ * the minimum value of the range
+ */
+static colrcv_test_result_t test_colrcv_clamp_greater_than_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    test.result = test_colrcv_clamp(1000000, -100, 100, 100);
+
+    return test;
+}
+
 int main(void) {
     // initialise test suite
     colrcv_test_suite_t suite = colrcv_init_test_suite();
@@ -151,6 +202,9 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_range_valid_descending, &suite);
     colrcv_add_test_case(test_colrcv_range_valid_min_exceeded, &suite);
     colrcv_add_test_case(test_colrcv_range_valid_max_exceeded, &suite);
+    colrcv_add_test_case(test_colrcv_clamp_within_range, &suite);
+    colrcv_add_test_case(test_colrcv_clamp_less_than_range, &suite);
+    colrcv_add_test_case(test_colrcv_clamp_greater_than_range, &suite);
     // run test suite
     colrcv_run_test_suite(&suite);
     // free test suite
