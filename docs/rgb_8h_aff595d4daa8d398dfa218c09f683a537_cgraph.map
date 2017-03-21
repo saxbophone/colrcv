@@ -1,8 +1,0 @@
-<map id="colrcv_rgb_is_valid" name="colrcv_rgb_is_valid">
-<area shape="rect" id="node2" href="$rgb_8h.html#a6190cbd5440fdb1adb6ae840438bfb56" title="Checks that red component of a given colrcv_rgb_t struct is valid. " alt="" coords="188,5,332,32"/>
-<area shape="rect" id="node4" href="$rgb_8h.html#abb3b453035a5b1321429e46c24270fab" title="Checks that green component of a given colrcv_rgb_t struct is valid. " alt="" coords="187,56,333,83"/>
-<area shape="rect" id="node5" href="$rgb_8h.html#acac38dc70dedb4c9d3d05f17b98edab6" title="Checks that blue component of a given colrcv_rgb_t struct is valid. " alt="" coords="187,107,333,133"/>
-<area shape="rect" id="node6" href="$colrcv_8h.html#adfc7d979d093165675445bff21d36ed5" title="Get the smallest of two given values. " alt="" coords="217,157,303,184"/>
-<area shape="rect" id="node7" href="$colrcv_8h.html#a0e43c765c0cf8e97e48a0edac140756b" title="Get the largest of two given values. " alt="" coords="215,208,305,235"/>
-<area shape="rect" id="node3" href="$colrcv_8h.html#aef75c61699a7f00e2da3614698e619ef" title="A utility function for checking that a given value is in a given range. " alt="" coords="381,56,512,83"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="colrcv_xyz_is_valid" name="colrcv_xyz_is_valid">
-<area shape="rect" id="node2" href="$xyz_8h.html#a1b7b95606b4d3a7542f5e683115355be" title="Checks that x component of a given colrcv_xyz_t struct is valid. " alt="" coords="189,5,340,32"/>
-<area shape="rect" id="node4" href="$xyz_8h.html#a71cfdfec3c0087abd0afff24e5d82b69" title="Checks that y component of a given colrcv_xyz_t struct is valid. " alt="" coords="189,56,340,83"/>
-<area shape="rect" id="node5" href="$xyz_8h.html#a9aa7752e8f180a482a052e7c1fdd7e3c" title="Checks that z component of a given colrcv_xyz_t struct is valid. " alt="" coords="189,107,340,133"/>
-<area shape="rect" id="node3" href="$colrcv_8h.html#aef75c61699a7f00e2da3614698e619ef" title="A utility function for checking that a given value is in a given range. " alt="" coords="388,56,519,83"/>
-</map>

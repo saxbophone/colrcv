@@ -1,6 +1,0 @@
-<map id="colrcv_lab_is_valid" name="colrcv_lab_is_valid">
-<area shape="rect" id="node2" href="$lab_8h.html#ad6e587b0db70d607e50b38c92bce7209" title="Checks that hue component of a given colrcv_lab_t struct is valid. " alt="" coords="187,5,330,32"/>
-<area shape="rect" id="node4" href="$lab_8h.html#a1d1e8c717d9bedbbe334c832d7699769" title="Checks that saturation component of a given colrcv_lab_t struct is valid. " alt="" coords="185,56,332,83"/>
-<area shape="rect" id="node5" href="$lab_8h.html#a3ede3437b2cccb50586c5b714979ab8a" title="Checks that value component of a given colrcv_lab_t struct is valid. " alt="" coords="185,107,332,133"/>
-<area shape="rect" id="node3" href="$colrcv_8h.html#aef75c61699a7f00e2da3614698e619ef" title="A utility function for checking that a given value is in a given range. " alt="" coords="380,56,511,83"/>
-</map>

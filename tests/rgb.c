@@ -221,8 +221,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsv(void) {
 
     // convert each colour and compare with output
     for(uint8_t i = 0; i < 4; i++) {
-        colrcv_hsv_t result;
-        colrcv_rgb_to_hsv(colours[i].input, &result);
+        colrcv_hsv_t result = colrcv_rgb_to_hsv(colours[i].input);
         bool conversion_ok = (
             almost_equal(result.h, colours[i].output.h) &&
             almost_equal(result.s, colours[i].output.s) &&
@@ -286,8 +285,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_hsl(void) {
 
     // convert each colour and compare with output
     for(uint8_t i = 0; i < 4; i++) {
-        colrcv_hsl_t result;
-        colrcv_rgb_to_hsl(colours[i].input, &result);
+        colrcv_hsl_t result = colrcv_rgb_to_hsl(colours[i].input);
         bool conversion_ok = (
             almost_equal(result.h, colours[i].output.h) &&
             almost_equal(result.s, colours[i].output.s) &&
@@ -355,8 +353,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_lab(void) {
 
     // convert each colour and compare with output
     for(uint8_t i = 0; i < 4; i++) {
-        colrcv_lab_t result;
-        colrcv_rgb_to_lab(colours[i].input, &result);
+        colrcv_lab_t result = colrcv_rgb_to_lab(colours[i].input);
         bool conversion_ok = (
             almost_equal(result.l, colours[i].output.l) &&
             almost_equal(result.a, colours[i].output.a) &&
@@ -420,8 +417,7 @@ static colrcv_test_result_t test_colrcv_rgb_to_xyz(void) {
 
     // convert each colour and compare with output
     for(uint8_t i = 0; i < 4; i++) {
-        colrcv_xyz_t result;
-        colrcv_rgb_to_xyz(colours[i].input, &result);
+        colrcv_xyz_t result = colrcv_rgb_to_xyz(colours[i].input);
         bool conversion_ok = (
             almost_equal(result.x, colours[i].output.x) &&
             almost_equal(result.y, colours[i].output.y) &&

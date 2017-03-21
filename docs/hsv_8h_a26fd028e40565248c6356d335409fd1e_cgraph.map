@@ -1,4 +1,0 @@
-<map id="colrcv_hsv_to_xyz" name="colrcv_hsv_to_xyz">
-<area shape="rect" id="node2" href="$hsv_8h.html#a88ef2b26e9160b54b9ffd92c87f401a9" title="Converts a HSV colour to an RGB colour. " alt="" coords="184,5,312,32"/>
-<area shape="rect" id="node3" href="$rgb_8h.html#a620129830fc7c461565a4966a8c472da" title="Converts an RGB colour to an XYZ colour. " alt="" coords="184,56,312,83"/>
-</map>
