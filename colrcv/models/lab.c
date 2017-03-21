@@ -82,16 +82,16 @@ static double convert_lab_for_xyz(double c) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=08#text8
 colrcv_xyz_t colrcv_lab_to_xyz(colrcv_lab_t lab) {
-    colrcv_xyz_t xyz;
     // skew input values
     const double y = (lab.l + 16.0) / 116.0;
     const double x = lab.a / 500.0 + y;
     const double z = y - lab.b / 200.0;
     // normalise components and adjust for observer calibration
-    xyz.x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x);
-    xyz.y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y);
-    xyz.z = COLRCV_XYZ_Z_REF_VALUE * convert_lab_for_xyz(z);
-    return xyz;
+    return (colrcv_xyz_t){
+        .x = COLRCV_XYZ_X_REF_VALUE * convert_lab_for_xyz(x),
+        .y = COLRCV_XYZ_Y_REF_VALUE * convert_lab_for_xyz(y),
+        .z = COLRCV_XYZ_Z_REF_VALUE * convert_lab_for_xyz(z),
+    };
 }
 
 #ifdef __cplusplus

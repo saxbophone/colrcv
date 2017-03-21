@@ -105,12 +105,13 @@ static double get_hue_amount(
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=20#text20
 colrcv_hsv_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb) {
-    colrcv_hsv_t hsv;
     double r, g, b, min_channel, max_channel, delta_channel;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
     // get min and max of these channels and the delta of min and max
     get_min_max_delta(r, g, b, &min_channel, &max_channel, &delta_channel);
+    // output variable
+    colrcv_hsv_t hsv;
     // the value component is set to max_channel (upscaled to 0-100 range)
     hsv.v = max_channel * 100;
     // if delta is 0, this is an achromatic grey
@@ -128,12 +129,13 @@ colrcv_hsv_t colrcv_rgb_to_hsv(colrcv_rgb_t rgb) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=18#text18
 colrcv_hsl_t colrcv_rgb_to_hsl(colrcv_rgb_t rgb) {
-    colrcv_hsl_t hsl;
     double r, g, b, min_channel, max_channel, delta_channel;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
     // get min and max of these channels and the delta of min and max
     get_min_max_delta(r, g, b, &min_channel, &max_channel, &delta_channel);
+    // output variable
+    colrcv_hsl_t hsl;
     // the lightness component is set to the average of max and min of channels
     hsl.l = (max_channel + min_channel) / 2 * 100;
     // if delta is 0, this is an achromatic grey
@@ -171,7 +173,6 @@ static double convert_rgb_for_xyz(double c) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=02#text2
 colrcv_xyz_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb) {
-    colrcv_xyz_t xyz;
     double r, g, b;
     // scale down each RGB channel
     scale_down_rgb(rgb, &r, &g, &b);
@@ -180,10 +181,11 @@ colrcv_xyz_t colrcv_rgb_to_xyz(colrcv_rgb_t rgb) {
     g = convert_rgb_for_xyz(g) * 100;
     b = convert_rgb_for_xyz(b) * 100;
     // apply matrix transforms
-    xyz.x = r * 0.4124 + g * 0.3576 + b * 0.1805;
-    xyz.y = r * 0.2126 + g * 0.7152 + b * 0.0722;
-    xyz.z = r * 0.0193 + g * 0.1192 + b * 0.9505;
-    return xyz;
+    return (colrcv_xyz_t){
+        .x = r * 0.4124 + g * 0.3576 + b * 0.1805,
+        .y = r * 0.2126 + g * 0.7152 + b * 0.0722,
+        .z = r * 0.0193 + g * 0.1192 + b * 0.9505,
+    };
 }
 
 #ifdef __cplusplus

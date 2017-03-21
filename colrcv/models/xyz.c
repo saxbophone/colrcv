@@ -83,7 +83,6 @@ static void clamp_rgb(colrcv_rgb_t* rgb) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=01#text1
 colrcv_rgb_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz) {
-    colrcv_rgb_t rgb;
     // shrink larger numbers downs
     const double x = xyz.x / 100.0;
     const double y = xyz.y / 100.0;
@@ -92,6 +91,8 @@ colrcv_rgb_t colrcv_xyz_to_rgb(colrcv_xyz_t xyz) {
     const double r = x *  3.2406 + y * -1.5372 + z * -0.4986;
     const double g = x * -0.9689 + y *  1.8758 + z *  0.0415;
     const double b = x *  0.0557 + y * -0.2040 + z *  1.0570;
+    // declare output variable
+    colrcv_rgb_t rgb;
     // convert components and upscale
     rgb.r = convert_xyz_for_rgb(r) * 255.0;
     rgb.g = convert_xyz_for_rgb(g) * 255.0;
@@ -119,16 +120,16 @@ static double convert_xyz_for_lab(double c) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=07#text7
 colrcv_lab_t colrcv_xyz_to_lab(colrcv_xyz_t xyz) {
-    colrcv_lab_t lab;
     // skew and convert input values
     const double x = convert_xyz_for_lab(xyz.x / COLRCV_XYZ_X_REF_VALUE);
     const double y = convert_xyz_for_lab(xyz.y / COLRCV_XYZ_Y_REF_VALUE);
     const double z = convert_xyz_for_lab(xyz.z / COLRCV_XYZ_Z_REF_VALUE);
     // convert to LAB ranges
-    lab.l = (116 * y) - 16;
-    lab.a = 500 * (x - y);
-    lab.b = 200 * (y - z);
-    return lab;
+    return (colrcv_lab_t){
+        .l = (116 * y) - 16,
+        .a = 500 * (x - y),
+        .b = 200 * (y - z),
+    };
 }
 
 #ifdef __cplusplus
