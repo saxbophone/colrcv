@@ -58,7 +58,7 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv) {
 
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=21#text21
 colrcv_rgb_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv) {
-    colrcv_rgb_t rgb;
+    colrcv_rgb_t rgb = { .r = 0, .g = 0, .b = 0, };
     // down-scale s and v input values first
     const double s = hsv.s / 100;
     const double v = hsv.v / 100;
