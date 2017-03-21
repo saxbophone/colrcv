@@ -17,7 +17,7 @@
 # begin basic metadata
 cmake_minimum_required(VERSION 3.0)
 
-project(colrcv VERSION 0.2.0 LANGUAGES C)
+project(colrcv VERSION 0.3.0 LANGUAGES C)
 
 # set default C standard to use (C99) if not already set
 if(NOT DEFINED COLRCV_C_STANDARD)
