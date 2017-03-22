@@ -56,6 +56,29 @@ bool colrcv_hsl_is_valid(colrcv_hsl_t hsl) {
     );
 }
 
+colrcv_hsl_t colrcv_hsl_clamp(colrcv_hsl_t hsl) {
+    // run all clamping functions on the value
+    return colrcv_hsl_clamp_l(colrcv_hsl_clamp_s(colrcv_hsl_clamp_h(hsl)));
+}
+
+colrcv_hsl_t colrcv_hsl_clamp_h(colrcv_hsl_t hsl) {
+    // clamp hue
+    hsl.h = colrcv_clamp(hsl.h, COLRCV_HSL_MIN_VALUE, COLRCV_HSL_H_MAX_VALUE);
+    return hsl;
+}
+
+colrcv_hsl_t colrcv_hsl_clamp_s(colrcv_hsl_t hsl) {
+    // clamp saturation
+    hsl.s = colrcv_clamp(hsl.s, COLRCV_HSL_MIN_VALUE, COLRCV_HSL_S_MAX_VALUE);
+    return hsl;
+}
+
+colrcv_hsl_t colrcv_hsl_clamp_l(colrcv_hsl_t hsl) {
+    // clamp lightness
+    hsl.l = colrcv_clamp(hsl.l, COLRCV_HSL_MIN_VALUE, COLRCV_HSL_L_MAX_VALUE);
+    return hsl;
+}
+
 // private helper function for colrcv_hsl_to_rgb
 static double hue_to_rgb(double a, double b, double h) {
     if(h < 0) {

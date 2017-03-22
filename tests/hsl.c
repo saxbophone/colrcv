@@ -316,8 +316,8 @@ static colrcv_test_result_t test_colrcv_hsl_clamp_s_within_range(void) {
     // set saturation chanel to average of minimum and maximum bounds
     // set other channels to extreme values, bound to be invalid
     colrcv_hsl_t input = {
-        .h = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_H_MAX_VALUE) / 2.0,
-        .s = -INFINITY,
+        .h = -INFINITY,
+        .s = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_S_MAX_VALUE) / 2.0,
         .l = INFINITY,
     };
     // saturation should be valid
@@ -379,9 +379,9 @@ static colrcv_test_result_t test_colrcv_hsl_clamp_l_within_range(void) {
     // set lightness chanel to average of minimum and maximum bounds
     // set other channels to extreme values, bound to be invalid
     colrcv_hsl_t input = {
-        .h = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_H_MAX_VALUE) / 2.0,
-        .s = -INFINITY,
-        .l = INFINITY,
+        .h = -INFINITY,
+        .s = INFINITY,
+        .l = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_L_MAX_VALUE) / 2.0,
     };
     // lightness should be valid
     assert(colrcv_hsl_l_is_valid(input));
