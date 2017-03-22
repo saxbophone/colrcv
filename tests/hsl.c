@@ -13,10 +13,10 @@
  * of the Copyright holder.
  */
 #include <assert.h>
-#include <stdbool.h>
-#include <stdio.h>
 #include <inttypes.h>
 #include <math.h>
+#include <stdbool.h>
+#include <stdio.h>
 
 #include "../unit_test_harness/harness.h"
 #include "support.h"
