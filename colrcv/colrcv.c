@@ -32,11 +32,11 @@ bool colrcv_range_valid(double min, double val, double max) {
 }
 
 double colrcv_min(double a, double b) {
-    return (a <= b) ? a : b;
+    return (a < b) ? a : b;
 }
 
 double colrcv_max(double a, double b) {
-    return (a >= b) ? a : b;
+    return (a > b) ? a : b;
 }
 
 double colrcv_clamp(double value, double min, double max) {
