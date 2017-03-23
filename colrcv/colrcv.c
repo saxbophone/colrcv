@@ -39,6 +39,11 @@ double colrcv_max(double a, double b) {
     return (a > b) ? a : b;
 }
 
+double colrcv_clamp(double value, double min, double max) {
+    // returning the minimum of the maximum is an easy way to clamp
+    return colrcv_min(max, colrcv_max(min, value));
+}
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

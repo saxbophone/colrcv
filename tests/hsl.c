@@ -12,9 +12,11 @@
  * No copying or reproduction is permitted without the express, written consent
  * of the Copyright holder.
  */
+#include <assert.h>
+#include <inttypes.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <inttypes.h>
 
 #include "../unit_test_harness/harness.h"
 #include "support.h"
@@ -176,6 +178,253 @@ static colrcv_test_result_t test_colrcv_hsl_is_valid_false(void) {
             .l = (COLRCV_HSL_L_MAX_VALUE * 2),
         }
     ) ? COLRCV_TEST_FAIL : COLRCV_TEST_SUCCESS;
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp
+ * Function should return an identical colrcv_hsl_t struct to the one passed to
+ * it when the channels of the struct are all within their valid ranges
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_within_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set all chanels to average of minimum and maximum bounds
+    colrcv_hsl_t input = {
+        .h = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_H_MAX_VALUE) / 2.0,
+        .s = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_S_MAX_VALUE) / 2.0,
+        .l = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_L_MAX_VALUE) / 2.0,
+    };
+    // should be valid (this is an assertion because if not it's a test error)
+    assert(colrcv_hsl_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp(input);
+
+    // output should be equal to input
+    test.result = (
+        (output.h == input.h) && (output.s == input.s) && (output.l == input.l)
+    ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp
+ * Function should return a clamped colrcv_hsl_t struct when the one passed to
+ * it has channels which are outside their valid ranges
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_outside_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set each channel to be higher or lower than its maximum or minimum value
+    colrcv_hsl_t input = {
+        .h = COLRCV_HSL_MIN_VALUE - 100,
+        .s = COLRCV_HSL_S_MAX_VALUE + 55.57,
+        .l = COLRCV_HSL_MIN_VALUE - 99.9,
+    };
+    // should be invalid
+    assert(!colrcv_hsl_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp(input);
+
+    // output should not be equal to input
+    bool not_equal = (
+        (output.h != input.h) && (output.s != input.s) && (output.l != input.l)
+    );
+    // output should be valid according to the validity-checking function
+    bool is_valid = colrcv_hsl_is_valid(output);
+
+    test.result = (
+        (not_equal && is_valid) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_h
+ * Function should return an identical colrcv_hsl_t struct to the one passed to
+ * it when the hue channel of the struct is within the valid range for hue
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_h_within_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set hue chanel to average of minimum and maximum bounds
+    // set other channels to extreme values, bound to be invalid
+    colrcv_hsl_t input = {
+        .h = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_H_MAX_VALUE) / 2.0,
+        .s = -INFINITY,
+        .l = INFINITY,
+    };
+    // hue should be valid
+    assert(colrcv_hsl_h_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_h(input);
+
+    // output hue channel should be equal to input
+    test.result = (
+        (output.h == input.h) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_h
+ * Function should return a colrcv_hsl_t struct with a clamped hue channel when
+ * given a struct with an invalid hue channel
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_h_outside_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set all channels to extreme values
+    colrcv_hsl_t input = { .h = INFINITY, .s = -INFINITY, .l = INFINITY, };
+    // hue should be invalid
+    assert(!colrcv_hsl_h_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_h(input);
+
+    // output hue channel should not be equal to input
+    // both other channels should remain unchanged
+    bool hue_changed = (
+        (output.h != input.h) && (output.s == input.s) && (output.l == input.l)
+    );
+    // output hue should be valid according to the validity-checking function
+    bool is_valid = colrcv_hsl_h_is_valid(output);
+    test.result = (
+        (hue_changed && is_valid) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_s
+ * Function should return an identical colrcv_hsl_t struct to the one passed to
+ * it when the saturation channel of the struct is within the valid range for
+ * saturation
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_s_within_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set saturation chanel to average of minimum and maximum bounds
+    // set other channels to extreme values, bound to be invalid
+    colrcv_hsl_t input = {
+        .h = -INFINITY,
+        .s = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_S_MAX_VALUE) / 2.0,
+        .l = INFINITY,
+    };
+    // saturation should be valid
+    assert(colrcv_hsl_s_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_s(input);
+
+    // output saturation channel should be equal to input
+    test.result = (
+        (output.s == input.s) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_s
+ * Function should return a colrcv_hsl_t struct with a clamped saturation
+ * channel when given a struct with an invalid saturation channel
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_s_outside_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set all channels to extreme values
+    colrcv_hsl_t input = { .h = INFINITY, .s = -INFINITY, .l = INFINITY, };
+    // saturation should be invalid
+    assert(!colrcv_hsl_s_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_s(input);
+
+    // output saturation channel should not be equal to input
+    // both other channels should remain unchanged
+    bool sat_changed = (
+        (output.h == input.h) && (output.s != input.s) && (output.l == input.l)
+    );
+    /*
+     * output saturation should be valid according to the validity-checking
+     * function
+     */
+    bool is_valid = colrcv_hsl_s_is_valid(output);
+    test.result = (
+        (sat_changed && is_valid) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_l
+ * Function should return an identical colrcv_hsl_t struct to the one passed to
+ * it when the lightness channel of the struct is within the valid range for
+ * lightness
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_l_within_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set lightness chanel to average of minimum and maximum bounds
+    // set other channels to extreme values, bound to be invalid
+    colrcv_hsl_t input = {
+        .h = -INFINITY,
+        .s = INFINITY,
+        .l = (COLRCV_HSL_MIN_VALUE + COLRCV_HSL_L_MAX_VALUE) / 2.0,
+    };
+    // lightness should be valid
+    assert(colrcv_hsl_l_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_l(input);
+
+    // output lightness channel should be equal to input
+    test.result = (
+        (output.l == input.l) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
+
+    return test;
+}
+
+/*
+ * Test the function colrcv_hsl_clamp_l
+ * Function should return a colrcv_hsl_t struct with a clamped lightness
+ * channel when given a struct with an invalid lightness channel
+ */
+static colrcv_test_result_t test_colrcv_hsl_clamp_l_outside_range(void) {
+    // initialise test result
+    colrcv_test_result_t test = COLRCV_TEST;
+
+    // set all channels to extreme values
+    colrcv_hsl_t input = { .h = INFINITY, .s = -INFINITY, .l = INFINITY, };
+    // lightness should be invalid
+    assert(!colrcv_hsl_l_is_valid(input));
+
+    colrcv_hsl_t output = colrcv_hsl_clamp_l(input);
+
+    // output lightness channel should not be equal to input
+    // both other channels should remain unchanged
+    bool lightness_changed = (
+        (output.h == input.h) && (output.s == input.s) && (output.l != input.l)
+    );
+    /*
+     * output lightness should be valid according to the validity-checking
+     * function
+     */
+    bool is_valid = colrcv_hsl_l_is_valid(output);
+    test.result = (
+        (lightness_changed && is_valid) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL
+    );
 
     return test;
 }
@@ -448,6 +697,14 @@ int main(void) {
     colrcv_add_test_case(test_colrcv_hsl_l_is_valid_false, &suite);
     colrcv_add_test_case(test_colrcv_hsl_is_valid_true, &suite);
     colrcv_add_test_case(test_colrcv_hsl_is_valid_false, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_within_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_outside_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_h_within_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_h_outside_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_s_within_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_s_outside_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_l_within_range, &suite);
+    colrcv_add_test_case(test_colrcv_hsl_clamp_l_outside_range, &suite);
     colrcv_add_test_case(test_colrcv_hsl_to_rgb, &suite);
     colrcv_add_test_case(test_colrcv_hsl_to_hsv, &suite);
     colrcv_add_test_case(test_colrcv_hsl_to_lab, &suite);

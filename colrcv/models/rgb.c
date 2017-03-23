@@ -55,6 +55,29 @@ bool colrcv_rgb_is_valid(colrcv_rgb_t rgb) {
     );
 }
 
+colrcv_rgb_t colrcv_rgb_clamp(colrcv_rgb_t rgb) {
+    // run all clamping functions on the value
+    return colrcv_rgb_clamp_b(colrcv_rgb_clamp_g(colrcv_rgb_clamp_r(rgb)));
+}
+
+colrcv_rgb_t colrcv_rgb_clamp_r(colrcv_rgb_t rgb) {
+    // clamp red channel
+    rgb.r = colrcv_clamp(rgb.r, COLRCV_RGB_MIN_VALUE, COLRCV_RGB_MAX_VALUE);
+    return rgb;
+}
+
+colrcv_rgb_t colrcv_rgb_clamp_g(colrcv_rgb_t rgb) {
+    // clamp green channel
+    rgb.g = colrcv_clamp(rgb.g, COLRCV_RGB_MIN_VALUE, COLRCV_RGB_MAX_VALUE);
+    return rgb;
+}
+
+colrcv_rgb_t colrcv_rgb_clamp_b(colrcv_rgb_t rgb) {
+    // clamp blue channel
+    rgb.b = colrcv_clamp(rgb.b, COLRCV_RGB_MIN_VALUE, COLRCV_RGB_MAX_VALUE);
+    return rgb;
+}
+
 /* BEGIN private support functions */
 
 // Scales down RGB amounts from 0->255 to 0->1

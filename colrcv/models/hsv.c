@@ -56,6 +56,29 @@ bool colrcv_hsv_is_valid(colrcv_hsv_t hsv) {
     );
 }
 
+colrcv_hsv_t colrcv_hsv_clamp(colrcv_hsv_t hsv) {
+    // run all clamping functions on the value
+    return colrcv_hsv_clamp_v(colrcv_hsv_clamp_s(colrcv_hsv_clamp_h(hsv)));
+}
+
+colrcv_hsv_t colrcv_hsv_clamp_h(colrcv_hsv_t hsv) {
+    // clamp hue
+    hsv.h = colrcv_clamp(hsv.h, COLRCV_HSV_MIN_VALUE, COLRCV_HSV_H_MAX_VALUE);
+    return hsv;
+}
+
+colrcv_hsv_t colrcv_hsv_clamp_s(colrcv_hsv_t hsv) {
+    // clamp saturation
+    hsv.s = colrcv_clamp(hsv.s, COLRCV_HSV_MIN_VALUE, COLRCV_HSV_S_MAX_VALUE);
+    return hsv;
+}
+
+colrcv_hsv_t colrcv_hsv_clamp_v(colrcv_hsv_t hsv) {
+    // clamp value
+    hsv.v = colrcv_clamp(hsv.v, COLRCV_HSV_MIN_VALUE, COLRCV_HSV_V_MAX_VALUE);
+    return hsv;
+}
+
 // Algorithm: http://www.easyrgb.com/index.php?X=MATH&H=21#text21
 colrcv_rgb_t colrcv_hsv_to_rgb(colrcv_hsv_t hsv) {
     colrcv_rgb_t rgb = { .r = 0, .g = 0, .b = 0, };

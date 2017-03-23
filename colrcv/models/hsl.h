@@ -107,6 +107,42 @@ bool colrcv_hsl_l_is_valid(colrcv_hsl_t hsl);
 bool colrcv_hsl_is_valid(colrcv_hsl_t hsl);
 
 /**
+ * @brief Makes all of the channels of a given `colrcv_hsl_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with all channels guaranteed to be within
+ * range.
+ * @since `v0.4.0`
+ */
+colrcv_hsl_t colrcv_hsl_clamp(colrcv_hsl_t hsl);
+
+/**
+ * @brief Makes the hue channel of a given `colrcv_hsl_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the hue channel guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_hsl_t colrcv_hsl_clamp_h(colrcv_hsl_t hsl);
+
+/**
+ * @brief Makes the saturation channel of a given `colrcv_hsl_t` struct fit
+ * within the 'standard' range for that channel.
+ * @returns A copy of the given struct with the saturation channel guaranteed to
+ * be within range.
+ * @since `v0.4.0`
+ */
+colrcv_hsl_t colrcv_hsl_clamp_s(colrcv_hsl_t hsl);
+
+/**
+ * @brief Makes the lightnness channel of a given `colrcv_hsl_t` struct fit
+ * within the 'standard' range for that channel.
+ * @returns A copy of the given struct with the lightnness channel guaranteed to
+ * be within range.
+ * @since `v0.4.0`
+ */
+colrcv_hsl_t colrcv_hsl_clamp_l(colrcv_hsl_t hsl);
+
+/**
  * @brief Converts a HSL colour to an RGB colour
  * @param hsl A HSL colour to be converted
  * @returns The RGB colour that the HSL colour was converted to
