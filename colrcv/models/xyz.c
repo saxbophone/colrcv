@@ -62,6 +62,29 @@ bool colrcv_xyz_is_valid(colrcv_xyz_t xyz) {
     );
 }
 
+colrcv_xyz_t colrcv_xyz_clamp(colrcv_xyz_t xyz) {
+    // run all clamping functions on the value
+    return colrcv_xyz_clamp_z(colrcv_xyz_clamp_y(colrcv_xyz_clamp_x(xyz)));
+}
+
+colrcv_xyz_t colrcv_xyz_clamp_x(colrcv_xyz_t xyz) {
+    // clamp x channel
+    xyz.x = colrcv_clamp(xyz.x, COLRCV_XYZ_MIN_VALUE, COLRCV_XYZ_X_MAX_VALUE);
+    return xyz;
+}
+
+colrcv_xyz_t colrcv_xyz_clamp_y(colrcv_xyz_t xyz) {
+    // clamp y channel
+    xyz.y = colrcv_clamp(xyz.y, COLRCV_XYZ_MIN_VALUE, COLRCV_XYZ_Y_MAX_VALUE);
+    return xyz;
+}
+
+colrcv_xyz_t colrcv_xyz_clamp_z(colrcv_xyz_t xyz) {
+    // clamp z channel
+    xyz.z = colrcv_clamp(xyz.z, COLRCV_XYZ_MIN_VALUE, COLRCV_XYZ_Z_MAX_VALUE);
+    return xyz;
+}
+
 /* BEGIN private helper functions for colrcv_xyz_to_rgb */
 
 static double convert_xyz_for_rgb(double c) {
