@@ -204,7 +204,7 @@ static colrcv_test_result_t test_colrcv_hsl_clamp_within_range(void) {
 
     // output should be equal to input
     test.result = (
-        (output.h == input.h) && (output.s == input.s) && (output.l = input.l)
+        (output.h == input.h) && (output.s == input.s) && (output.l == input.l)
     ) ? COLRCV_TEST_SUCCESS : COLRCV_TEST_FAIL;
 
     return test;
