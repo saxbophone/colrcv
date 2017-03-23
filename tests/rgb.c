@@ -376,7 +376,7 @@ static colrcv_test_result_t test_colrcv_rgb_clamp_b_within_range(void) {
     colrcv_test_result_t test = COLRCV_TEST;
 
     // set blue chanel to average of minimum and maximum bounds
-    // set other channels to extreme blues, bound to be invalid
+    // set other channels to extreme values, bound to be invalid
     colrcv_rgb_t input = {
         .r = -INFINITY,
         .g = INFINITY,
@@ -404,7 +404,7 @@ static colrcv_test_result_t test_colrcv_rgb_clamp_b_outside_range(void) {
     // initialise test result
     colrcv_test_result_t test = COLRCV_TEST;
 
-    // set all channels to extreme blues
+    // set all channels to extreme values
     colrcv_rgb_t input = { .r = INFINITY, .g = -INFINITY, .b = INFINITY, };
     // blue should be invalid
     assert(!colrcv_rgb_b_is_valid(input));
