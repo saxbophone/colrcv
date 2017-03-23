@@ -57,6 +57,29 @@ bool colrcv_lab_is_valid(colrcv_lab_t lab) {
     );
 }
 
+colrcv_lab_t colrcv_lab_clamp(colrcv_lab_t lab) {
+    // run all clamping functions on the value
+    return colrcv_lab_clamp_b(colrcv_lab_clamp_a(colrcv_lab_clamp_l(lab)));
+}
+
+colrcv_lab_t colrcv_lab_clamp_l(colrcv_lab_t lab) {
+    // clamp lightness channel
+    lab.l = colrcv_clamp(lab.l, COLRCV_LAB_L_MIN_VALUE, COLRCV_LAB_MAX_VALUE);
+    return lab;
+}
+
+colrcv_lab_t colrcv_lab_clamp_a(colrcv_lab_t lab) {
+    // clamp a component channel
+    lab.a = colrcv_clamp(lab.a, COLRCV_LAB_A_MIN_VALUE, COLRCV_LAB_MAX_VALUE);
+    return lab;
+}
+
+colrcv_lab_t colrcv_lab_clamp_b(colrcv_lab_t lab) {
+    // clamp b component channel
+    lab.b = colrcv_clamp(lab.b, COLRCV_LAB_B_MIN_VALUE, COLRCV_LAB_MAX_VALUE);
+    return lab;
+}
+
 colrcv_rgb_t colrcv_lab_to_rgb(colrcv_lab_t lab) {
     // Two-step conversion using LAB->XYZ and XYZ->RGB
     return colrcv_xyz_to_rgb(colrcv_lab_to_xyz(lab));

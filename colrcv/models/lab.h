@@ -107,6 +107,42 @@ bool colrcv_lab_b_is_valid(colrcv_lab_t lab);
 bool colrcv_lab_is_valid(colrcv_lab_t lab);
 
 /**
+ * @brief Makes all of the channels of a given `colrcv_lab_t` struct fit within
+ * the 'standard' range for that channel.
+ * @returns A copy of the given struct with all channels guaranteed to be within
+ * range.
+ * @since `v0.4.0`
+ */
+colrcv_lab_t colrcv_lab_clamp(colrcv_lab_t lab);
+
+/**
+ * @brief Makes the lightness channel of a given `colrcv_lab_t` struct fit
+ * within the 'standard' range for that channel.
+ * @returns A copy of the given struct with the lightness channel guaranteed to
+ * be within range.
+ * @since `v0.4.0`
+ */
+colrcv_lab_t colrcv_lab_clamp_l(colrcv_lab_t lab);
+
+/**
+ * @brief Makes the a component of a given `colrcv_lab_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the a component guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_lab_t colrcv_lab_clamp_a(colrcv_lab_t lab);
+
+/**
+ * @brief Makes the b component of a given `colrcv_lab_t` struct fit within the
+ * 'standard' range for that channel.
+ * @returns A copy of the given struct with the b component guaranteed to be
+ * within range.
+ * @since `v0.4.0`
+ */
+colrcv_lab_t colrcv_lab_clamp_b(colrcv_lab_t lab);
+
+/**
  * @brief Converts a LAB colour to an RGB colour
  * @param lab A LAB colour to be converted
  * @returns The RGB colour that the LAB colour was converted to
