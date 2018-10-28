@@ -10,16 +10,14 @@
  * the LAB model, and functions for manipulating it.
  *
  * @author Joshua Saxby `<joshua.a.saxby+TNOPLuc8vM==@gmail.com>`
- * @date 2017
+ * @date 2018
  *
- * @copyright Copyright (C) Joshua Saxby 2017
- *
- * @copyright
- * The Copyright holder reserves all rights of this work.
+ * @copyright Copyright (C) Joshua Saxby 2017, 2018
  *
  * @copyright
- * No copying or reproduction is permitted without the express, written consent
- * of the Copyright holder.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
  * @since `v0.1.0`
  */
