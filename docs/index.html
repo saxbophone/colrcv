@@ -80,7 +80,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">colrcv </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>C Library for converting Colours between different Colour Models </p>
+<div class="textblock"><p>C Library for converting Colours between different Colour Models</p>
+<p>This is a simple library written in ISO C99 for simple needs. Disclosure: <b>I am not a colorimetrist</b></p>
+<p>I wrote this library a while ago for use in another project of mine. I'm aware that there are libraries already out there that can achieve what this one does, but all those I found were far more complex than what I really needed for my simple needs (converting colours from a handful of different colour models into RGB, for use in computer graphics).</p>
+<p>The source used as a reference for the calculations implemented by this library is <a href="https://www.easyrgb.com/en/math.php">https://www.easyrgb.com/en/math.php</a> —this site really is rather good!</p>
+<p>Right now, the following colour models are supported:</p>
+<ul>
+<li>HSL</li>
+<li>HSV</li>
+<li>LAB*</li>
+<li>RGB</li>
+<li>XYZ*</li>
+</ul>
+<p>__*__ <em>The XYZ and LAB colour models require a given reference standard illuminant before either of these models can be converted to or from any other model besides these two. Currently, <b>colrcv</b> always uses the D65 illuminant to achieve this, but there are plans in the future to support choosing a different illuminant when making these conversions.</em></p>
+<p>Conversion between any two of these colour models is all supported by the library.</p>
+<h2>Licensing</h2>
+<p>Colrcv is licensed under the <b>Mozilla Public License Version 2.0</b> (<code>MPL-2.0</code>).</p>
+<p>This is a permissive software license which puts copyleft protections only on the original source files of the project themselves, but does not extend this copyleft to other sources which use the library. In other words, the library may be used and integrated into other projects regardless of whether they are open-source or commercial, but any modifications to the library itself must be made available under the same or an equivalent license (see license for further details on the nuances of this).</p>
+<p>A full verbatim of this license may be found in the [LICENSE](LICENSE) file in this repository. If for some reason you have not received this file, you can view a copy of the license at <a href="https://www.mozilla.org/MPL/2.0/">https://www.mozilla.org/MPL/2.0/</a>.</p>
+<h2>Building</h2>
+<p>Colrcv can be built without installing for test purposes and for general usage, however if you plan on writing programs that use it I recommend you install it so it will be in your system's standard library and header include locations.</p>
+<h3>Dependencies</h3>
+<p>There are no library dependencies whatsoever beyond the C99 standard library!</p>
+<h4>Build Tools</h4>
+<ul>
+<li>A compiler that can compile ISO C99 or C11 code (mingw gcc can compile it on Windows)</li>
+<li><a href="https://cmake.org/">Cmake</a> - v3.0 or newer</li>
+</ul>
+<h3>Recommended Library Build</h3>
+<blockquote class="doxtable">
+<p>An <b>out of source build</b> is recommended, as CMake clutters the directory it is executed in with many files which are awkward to remove. </p>
+</blockquote>
+<p>Invoke CMake within the <code>build</code> directory of this repository, with these arguments to make CMake build the library in release mode (with full optimisation) and as a shared library:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ..</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make</div></div><!-- fragment --><p>The above builds in C99 mode by default. The standard to use can be controlled by the <code>COLRCV_C_STANDARD</code> CMake variable or by the <code>COLRCV_C_STANDARD</code> environment variable.</p>
+<p>You can build in C11 mode if you want with either of the following:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;# using CMake variable</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCOLRCV_C_STANDARD=11 ..</div></div><!-- fragment --><p>```sh </p><h1>using environment variable</h1>
+<p>COLRCV_C_STANDARD=11 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ..</p>
+<p>CMake will generate a build script / project for most IDEs and toolchains (including simple Makefiles). After that, use your toolchain of choice to compile the library as you normally would. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
