@@ -7,17 +7,16 @@
 #
 #
 #
-# Copyright (C) 2017, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
+# Copyright (C) 2017, 2018, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
 #
-# The Copyright holder reserves all rights of this work.
-#
-# No copying or reproduction is permitted without the express, written consent
-# of the Copyright holder.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # begin basic metadata
 cmake_minimum_required(VERSION 3.0)
 
-project(colrcv VERSION 0.4.0 LANGUAGES C)
+project(colrcv VERSION 0.5.0 LANGUAGES C)
 
 # set default C standard to use (C99) if not already set
 if(NOT DEFINED COLRCV_C_STANDARD)
