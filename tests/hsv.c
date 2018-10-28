@@ -4,13 +4,11 @@
  * 
  * This unit tests the HSV colour model unit (models/hsv.h)
  *
+ * Copyright (C) 2017, 2018, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
  *
- * Copyright (C) 2017, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
- *
- * The Copyright holder reserves all rights of this work.
- *
- * No copying or reproduction is permitted without the express, written consent
- * of the Copyright holder.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 #include <assert.h>
 #include <inttypes.h>
