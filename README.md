@@ -12,11 +12,11 @@ Right now, the following colour models are supported:
 
 - HSL
 - HSV
-- LAB*
+- LAB¹
 - RGB
-- XYZ*
+- XYZ¹
 
-__*__ _The XYZ and LAB colour models require a given reference standard illuminant before either of these models can be converted to or from any other model besides these two. Currently, **colrcv** always uses the D65 illuminant to achieve this, but there are plans in the future to support choosing a different illuminant when making these conversions._
+> **¹** _The XYZ and LAB colour models require a given reference standard illuminant before either of these models can be converted to or from any other model besides these two. Currently, **colrcv** always uses the D65 illuminant to achieve this, but there are plans in the future to support choosing a different illuminant when making these conversions._
 
 Conversion between any two of these colour models is all supported by the library.
 
@@ -64,5 +64,6 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCOLRCV_C_STANDARD=11 .
 ```sh
 # using environment variable
 COLRCV_C_STANDARD=11 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ..
+```
 
 CMake will generate a build script / project for most IDEs and toolchains (including simple Makefiles). After that, use your toolchain of choice to compile the library as you normally would.
